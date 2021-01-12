@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin dashboard
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+   Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
+
+// Banner Section
+    Route::resource('/banner',\App\Http\Controllers\BannerController::class);
+
+
+});
