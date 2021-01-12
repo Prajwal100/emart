@@ -5,185 +5,73 @@
         <div class="container-fluid">
             <div class="block-header">
                 <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-12">
-                        <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Library</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                            <li class="breadcrumb-item active">Library</li>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Banners
+                            <a class="btn btn-sm btn-outline-secondary" href="{{route('banner.create')}}"><i class="icon-plus"></i> Create Banner</a></h2>
+                        <ul class="breadcrumb float-left">
+                            <li class="breadcrumb-item"><a href="{{route('admin')}}"><i class="icon-home"></i></a></li>
+                            <li class="breadcrumb-item active">Banner</li>
                         </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
-                        <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
-                            <div class="sparkline text-left" data-type="line" data-width="8em" data-height="20px" data-line-Width="1" data-line-Color="#00c5dc"
-                                 data-fill-Color="transparent">3,5,1,6,5,4,8,3</div>
-                            <span>Visitors</span>
-                        </div>
-                        <div class="inlineblock text-center m-r-15 m-l-15 hidden-sm">
-                            <div class="sparkline text-left" data-type="line" data-width="8em" data-height="20px" data-line-Width="1" data-line-Color="#f4516c"
-                                 data-fill-Color="transparent">4,6,3,2,5,6,5,4</div>
-                            <span>Visits</span>
-                        </div>
+                        <p class="float-right">Total Banners :{{\App\Models\Banner::count()}}</p>
                     </div>
                 </div>
             </div>
 
             <div class="row clearfix">
                 <div class="col-lg-12">
+                    @include('backend.layouts.notification')
+                </div>
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2><strong>Library</strong> List</h2>
-                            <ul class="header-dropdown">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another Action</a></li>
-                                        <li><a href="javascript:void(0);">Something else</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h2><strong>Banner</strong> List</h2>
+
                         </div>
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
-                                        <th>No.</th>
+                                        <th>S.N.</th>
                                         <th>Title</th>
-                                        <th>Subject</th>
-                                        <th>Department</th>
-                                        <th>Type</th>
-                                        <th>Year</th>
+                                        <th>Description</th>
+                                        <th>Photo</th>
+                                        <th>Condition</th>
                                         <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Data Structures using C & C++</td>
-                                        <td>C++</td>
-                                        <td>Computar</td>
-                                        <td>PDF</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Introduction to Computers</td>
-                                        <td>Computers</td>
-                                        <td>Computers</td>
-                                        <td>Book</td>
-                                        <td>Second Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Management Information System</td>
-                                        <td>Management</td>
-                                        <td>Information</td>
-                                        <td>PDF</td>
-                                        <td>Fourth Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Operating System Concepts</td>
-                                        <td>Computers</td>
-                                        <td>Computers</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Computer Networking</td>
-                                        <td>Management</td>
-                                        <td>Computer</td>
-                                        <td>PDF</td>
-                                        <td>Second Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Graphics</td>
-                                        <td>Management</td>
-                                        <td>Architecture</td>
-                                        <td>Book</td>
-                                        <td>Fourth Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Computer Networks</td>
-                                        <td>Networks</td>
-                                        <td>Computer</td>
-                                        <td>PDF</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>Animation</td>
-                                        <td>Management</td>
-                                        <td>Computer</td>
-                                        <td>Book</td>
-                                        <td>Fourth Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>Electronics</td>
-                                        <td>Management</td>
-                                        <td>Computer</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Integrated Circuits</td>
-                                        <td>Management</td>
-                                        <td>Architecture</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11</td>
-                                        <td>Electronics</td>
-                                        <td>Management</td>
-                                        <td>Architecture</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>12</td>
-                                        <td>Animation Graphic Fundamentals	</td>
-                                        <td>Management</td>
-                                        <td>Architecture</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13</td>
-                                        <td>Electronics</td>
-                                        <td>Management</td>
-                                        <td>Architecture</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
-                                    <tr>
-                                        <td>14</td>
-                                        <td>Graphic Designing</td>
-                                        <td>Management</td>
-                                        <td>Architecture</td>
-                                        <td>Book</td>
-                                        <td>First Year</td>
-                                        <td>In Stock</td>
-                                    </tr>
+
+                                    @foreach($banners as $item)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$item->title}}</td>
+                                            <td>{!! html_entity_decode($item->description) !!}</td>
+                                            <td><img src="{{$item->photo}}" alt="banner image" style="max-height: 90px; max-width: 120px"></td>
+                                            <td>
+                                                @if($item->condition=='banner')
+                                                    <span class="badge badge-success">{{$item->condition}}</span>
+                                                @else
+                                                    <span class="badge badge-primary">{{$item->condition}}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="toogle" value="{{$item->id}}" data-toggle="switchbutton" {{$item->status=='active' ? 'checked' : ''}} data-onlabel="active" data-offlabel="inactive" data-size="sm" data-onstyle="success" data-offstyle="danger">
+                                            </td>
+                                            <td>
+                                                <a href="{{route('banner.edit',$item->id)}}" data-toggle="tooltip" title="edit" class="float-left btn btn-sm btn-outline-warning" data-placement="bottom"><i class="fas fa-edit"></i> </a>
+                                                <form class="float-left ml-1" action="{{route('banner.destroy',$item->id)}}"  method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <a href="" data-toggle="tooltip" title="delete" data-id="{{$item->id}}" class="dltBtn btn btn-sm btn-outline-danger" data-placement="bottom"><i class="fas fa-trash-alt"></i> </a>
+                                                </form>
+
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -194,4 +82,62 @@
 
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.dltBtn').click(function (e) {
+            var form=$(this).closest('form');
+            var dataID=$(this).data('id');
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+
+        });
+    </script>
+    <script>
+        $('input[name=toogle]').change(function () {
+            var mode=$(this).prop('checked');
+            var id=$(this).val();
+            // alert(id);
+            $.ajax({
+                url:"{{route('banner.status')}}",
+                type:"POST",
+                data:{
+                    _token:'{{csrf_token()}}',
+                    mode:mode,
+                    id:id,
+                },
+                success:function (response) {
+                    if(response.status){
+                        alert(response.msg);
+                    }
+                    else{
+                        alert('Please try again!');
+                    }
+                }
+            })
+        });
+    </script>
 @endsection
