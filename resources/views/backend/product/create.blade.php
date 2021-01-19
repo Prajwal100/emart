@@ -96,7 +96,7 @@
                                         <select name="brand_id" class="form-control show-tick">
                                             <option value="">-- Brands --</option>
                                             @foreach(\App\Models\Brand::get() as $brand)
-                                                <option value="{{$brand->id}}">{{$brand->title}}</option>
+                                                <option value="{{$brand->id}}" {{old('brand_id')==$brand->id? 'selected ' : ''}}>{{$brand->title}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -105,7 +105,7 @@
                                         <select id="cat_id" name="cat_id" class="form-control show-tick">
                                             <option value="">-- Category --</option>
                                             @foreach(\App\Models\Category::where('is_parent',1)->get() as $cat)
-                                                <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                                <option value="{{$cat->id}}" {{old('cat_id')==$cat->id? 'selected ' : ''}}>{{$cat->title}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -135,10 +135,10 @@
 
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <label for="">Vendors</label>
-                                        <select name="condition" class="form-control show-tick">
+                                        <select name="vendor_id" class="form-control show-tick">
                                             <option value="">-- Vendors --</option>
                                             @foreach(\App\Models\User::where('role','vendor')->get() as $vendor)
-                                                <option value="{{$vendor->id}}">{{$vendor->full_name}}</option>
+                                                <option value="{{$vendor->id}}" {{old('vendor_id')==$vendor->id? 'selected ' : ''}}>{{$vendor->full_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -152,10 +152,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-outline-secondary">Cancel</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-outline-secondary">Cancel</button>
                             </form>
                         </div>
                     </div>

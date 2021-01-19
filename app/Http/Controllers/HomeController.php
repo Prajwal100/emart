@@ -25,4 +25,6 @@ class HomeController extends Controller
     {
         return redirect()->route(auth()->user()->role);
     }
+
+
 }

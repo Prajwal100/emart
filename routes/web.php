@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Frontend Section
+Route::get('/',[\App\Http\Controllers\IndexController::class,'home'])->name('home');
 
 Auth::routes(['register'=>false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 //Admin dashboard
 
@@ -43,5 +42,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     // Product Section
     Route::resource('/product',\App\Http\Controllers\ProductController::class);
     Route::post('product_status',[\App\Http\Controllers\ProductController::class,'productStatus'])->name('product.status');
+
+    // User Section
+    Route::resource('/user',\App\Http\Controllers\UserController::class);
+    Route::post('user_status',[\App\Http\Controllers\UserController::class,'userStatus'])->name('user.status');
 
 });
