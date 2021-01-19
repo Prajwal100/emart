@@ -66,7 +66,8 @@
                                                 <input type="checkbox" name="toogle" value="{{$item->id}}" data-toggle="switchbutton" {{$item->status=='active' ? 'checked' : ''}} data-onlabel="active" data-offlabel="inactive" data-size="sm" data-onstyle="success" data-offstyle="danger">
                                             </td>
                                             <td>
-                                                <a href="{{route('banner.edit',$item->id)}}" data-toggle="tooltip" title="edit" class="float-left btn btn-sm btn-outline-warning" data-placement="bottom"><i class="fas fa-edit"></i> </a>
+                                                <a href="javascript:void(0);"  data-toggle="modal" data-target="#productID{{$item->id}}" data-toggle="tooltip" title="view" class="float-left btn btn-sm btn-outline-secondary" data-placement="bottom"><i class="fas fa-eye"></i> </a>
+                                                <a href="{{route('product.edit',$item->id)}}" data-toggle="tooltip" title="edit" class="float-left btn btn-sm btn-outline-warning" data-placement="bottom"><i class="fas fa-edit"></i> </a>
                                                 <form class="float-left ml-1" action="{{route('banner.destroy',$item->id)}}"  method="post">
                                                     @csrf
                                                     @method('delete')
@@ -74,6 +75,83 @@
                                                 </form>
 
                                             </td>
+
+{{--                                            modal--}}
+                                        <!-- Modal -->
+                                            <div class="modal fade" id="productID{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    @php
+                                                    $product=\App\Models\Product::where('id',$item->id)->first();
+                                                    @endphp
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">{{\Illuminate\Support\Str::upper($product->title)}}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <strong>Summary:</strong>
+                                                            <p>{!! html_entity_decode($product->summary) !!}</p>
+                                                            <strong>Description:</strong>
+                                                            <p>{!! html_entity_decode($product->description) !!}</p>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Price:</strong>
+                                                                    <p>${{number_format($product->price,2)}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Offer Price:</strong>
+                                                                    <p>${{number_format($product->offer_price,2)}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Category:</strong>
+                                                                    <p>{{\App\Models\Category::where('id',$product->cat_id)->value('title')}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Child Category:</strong>
+                                                                    <p>{{\App\Models\Category::where('id',$product->child_cat_id)->value('title')}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Brand:</strong>
+                                                                    <p>{{\App\Models\Brand::where('id',$product->brand_id)->value('title')}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Size:</strong>
+                                                                    <p class="badge badge-success">{{$product->size}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Conditions:</strong>
+                                                                    <p class="badge badge-primary">{{$product->conditions}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Status:</strong>
+                                                                    <p class="badge badge-warning">{{$product->status}}</p>
+                                                                </div>
+                                                            </div>
+
+
+
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </tr>
                                     @endforeach
