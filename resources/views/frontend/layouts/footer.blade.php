@@ -94,8 +94,8 @@
         <div class="container">
             <div class="copyright-payment d-md-flex align-items-center justify-content-between">
                 <div class="copyright text-center pt-10">
-                    <p class="text">All copyrights reserved © 2022 - Designed & Developed by <a rel="nofollow"
-                                                                                                href="https://graygrids.com/">GrayGrids</a></p>
+                    <p class="text">All copyrights reserved © {{date('Y')}} - Developed by <a rel="nofollow"
+                                                                                                href="https://raiprajwal.com/">Prajwal Rai</a></p>
                 </div>
                 <div class="payment text-center pt-10">
                     <img src="frontend/assets/images/payment.png" alt="payment">

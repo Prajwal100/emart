@@ -16,6 +16,40 @@ use Illuminate\Support\Facades\Route;
 //Frontend Section
 Route::get('/',[\App\Http\Controllers\IndexController::class,'home'])->name('home');
 
+//product category
+Route::get('product-category/{slug}/',[\App\Http\Controllers\IndexController::class,'productCategory'])->name('product.category');
+
+
+
+//aboutus
+Route::get('about-us',[\App\Http\Controllers\IndexController::class,'aboutUs'])->name('about.us');
+
+//contact
+Route::get('contact',[\App\Http\Controllers\IndexController::class,'contact'])->name('contact');
+
+//shop
+Route::get('shop',[\App\Http\Controllers\IndexController::class,'shop'])->name('shop');
+
+//cart
+Route::get('cart',[\App\Http\Controllers\IndexController::class,'cart'])->name('cart');
+
+//wishlist
+Route::get('wishlist',[\App\Http\Controllers\IndexController::class,'wishlist'])->name('wishlist');
+
+
+//checkout
+Route::get('checkout',[\App\Http\Controllers\IndexController::class,'checkout'])->name('checkout');
+
+
+//blog
+Route::get('blog',[\App\Http\Controllers\IndexController::class,'blog'])->name('blog');
+
+
+
+
+
+//End frontend section
+
 Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);

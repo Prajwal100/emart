@@ -11,7 +11,7 @@
                         <div class="header-info text-center">
                             <ul>
                                 <li><a href="#">My account</a></li>
-                                <li><a href="#">Checkout</a></li>
+                                <li><a href="{{route('checkout')}}">Checkout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header-logo">
-                        <a href="index.html">
-                            <img src="frontend/assets/images/logo.png" alt="Logo">
+                        <a href="{{route('home')}}">
+                            <img src="{{asset('frontend/assets/images/logo.png')}}" alt="Logo">
                         </a>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         <div class="header-shop-cart">
                             <ul>
                                 <li>
-                                    <a class="single-cart" href="#">
+                                    <a class="single-cart" href="{{route('wishlist')}}">
                                         <i class="lni lni-heart"></i>
                                         <span class="shop-quantity">0</span>
                                     </a>
@@ -113,8 +113,8 @@
                                                 <span class="price">$210.00</span>
                                             </div>
                                             <div class="cart-btn d-flex justify-content-between">
-                                                <a href="#" class="main-btn btn-border">view Cart</a>
-                                                <a href="#" class="main-btn">Checkout</a>
+                                                <a href="{{route('cart')}}" class="main-btn btn-border">view Cart</a>
+                                                <a href="{{route('checkout')}}" class="main-btn">Checkout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -131,51 +131,18 @@
             <div class="row">
                 <div class="col-lg-2 sticky-block">
                     <div class="menu-logo">
-                        <a href="index.html"><img src="frontend/assets/images/logo.png" alt="Logo"></a>
+                        <a href="{{route('home')}}"><img src="frontend/assets/images/logo.png" alt="Logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="navbar-menu">
                         <ul>
                             <li>
-                                <a class="active" href="index.html">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a class="active" href="index.html">Home 01</a></li>
-                                    <li><a href="index-2.html">Home 02</a></li>
-                                </ul>
+                                <a class="{{\Request::is('/') ? 'active' : ''}}" href="{{route('home')}}">Home</a>
                             </li>
-                            <li><a href="shop-right.html">Shop</a>
-                                <ul class="mega-menu clearfix">
-                                    <li>
-                                        <h5 class="menu-title">Shop Layouts</h5>
-                                        <ul>
-                                            <li><a href="#">Sidebar Left</a></li>
-                                            <li><a href="#">Sidebar Right</a></li>
-                                            <li><a href="#">Full Width</a></li>
-                                            <li><a href="#">List View</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <h5 class="menu-title">Shop Layouts</h5>
-                                        <ul>
-                                            <li><a href="#">Sidebar Left</a></li>
-                                            <li><a href="#">Sidebar Right</a></li>
-                                            <li><a href="#">Full Width</a></li>
-                                            <li><a href="#">List View</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <h5 class="menu-title">Shop Layouts</h5>
-                                        <ul>
-                                            <li><a href="#">Sidebar Left</a></li>
-                                            <li><a href="#">Sidebar Right</a></li>
-                                            <li><a href="#">Full Width</a></li>
-                                            <li><a href="#">List View</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li><a class="{{\Request::is('shop') ? 'active' : ''}}" href="{{route('shop')}}">Shop</a>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a class="{{\Request::is('about-us') ? 'active' : ''}}" href="{{route('about.us')}}">About</a></li>
                             <li><a href="#">Page</a>
                                 <ul class="sub-menu">
                                     <li><a href="about.html">About</a></li>
@@ -194,14 +161,9 @@
                                     <li><a href="error.html">Error</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog-left.html">Blog Left</a></li>
-                                    <li><a href="blog-right.html">Blog Right</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
+                            <li><a class="{{\Request::is('blog') ? 'active' : ''}}" href="{{route('blog')}}">Blog</a>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a class="{{\Request::is('contact') ? 'active' : ''}}" href="{{route('contact')}}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -278,7 +240,7 @@
                     <a class="mobile-menu-open" href="javascript:void(0)"><i class="lni lni-menu"></i></a>
                 </div>
                 <div class="mobile-logo">
-                    <a href="index.html"><img src="frontend/assets/images/logo.png" alt="Logo"></a>
+                    <a href="{{route('home')}}"><img src="frontend/assets/images/logo.png" alt="Logo"></a>
                 </div>
                 <div class="header-shop-cart">
                     <ul>

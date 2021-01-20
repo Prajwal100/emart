@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')\
+@extends('frontend.layouts.master')
 
 @section('content')
 
@@ -24,80 +24,33 @@
     </section>
 
 
+    @if(count($categories)>0)
     <section class="feature-categories-area pt-50">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-feature-categories mt-30">
-                        <div class="feature-categories-image">
-                            <img src="frontend/assets/images/img1.jpg" alt="feature categories">
-                        </div>
-                        <div class="feature-categories-content text-center">
-                            <div class="categories-content">
-                                <h3 class="categories-title">Men's Collection</h3>
-                                <p class="text">Summer Exclusive</p>
+
+                @foreach($categories as $cat)
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="single-feature-categories mt-30">
+                            <div class="feature-categories-image">
+                                <img src="{{$cat->photo}}" alt="feature categories">
                             </div>
-                            <div class="categories-btn">
-                                <a class="main-btn" href="category.html">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-feature-categories mt-30">
-                        <div class="feature-categories-image">
-                            <img src="frontend/assets/images/img3.jpg" alt="feature categories">
-                        </div>
-                        <div class="feature-categories-content text-center">
-                            <div class="categories-content">
-                                <h3 class="categories-title">WOMEN'S CLOTHING</h3>
-                                <p class="text">Up to 70% OFF</p>
-                            </div>
-                            <div class="categories-btn">
-                                <a class="main-btn" href="category.html">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-6">
-                            <div class="single-feature-categories mt-30">
-                                <div class="feature-categories-image">
-                                    <img src="frontend/assets/images/img2.jpg" alt="feature categories">
+                            <div class="feature-categories-content text-center">
+                                <div class="categories-content">
+                                    <h3 class="categories-title">{{$cat->title}}</h3>
+                                    <p class="text">{{$cat->summary}}</p>
                                 </div>
-                                <div class="feature-categories-content text-center">
-                                    <div class="categories-content">
-                                        <h4 class="categories-title-2">ACCESSORIES</h4>
-                                        <p class="text">Handpicked for Men/Women</p>
-                                    </div>
-                                    <div class="categories-btn">
-                                        <a class="main-btn" href="category.html">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <div class="single-feature-categories mt-30">
-                                <div class="feature-categories-image">
-                                    <img src="frontend/assets/images/img4.jpg" alt="feature categories">
-                                </div>
-                                <div class="feature-categories-content text-center">
-                                    <div class="categories-content">
-                                        <h4 class="categories-title-2">KIDS ESSENTIALS</h4>
-                                        <p class="text">Best Collection for Kids</p>
-                                    </div>
-                                    <div class="categories-btn">
-                                        <a class="main-btn" href="category.html">Shop Now</a>
-                                    </div>
+                                <div class="categories-btn">
+                                    <a class="main-btn" href="{{route('product.category',$cat->slug)}}">Shop Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+    @endif
 
 
     <section class="new-arrivals-area pt-70 pb-80">

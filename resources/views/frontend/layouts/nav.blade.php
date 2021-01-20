@@ -5,42 +5,9 @@
             <nav>
                 <ul>
                     <li class="menu-item-has-children">
-                        <a class="active" href="#">Home</a>
-                        <ul class="sub-menu">
-                            <li><a class="active" href="index.html">Home 01</a></li>
-                            <li><a href="index-2.html">Home 02</a></li>
-                        </ul>
+                        <a class="active" href="{{route('home')}}">Home</a>
                     </li>
-                    <li class="menu-item-has-children"><a href="#">Shop</a>
-                        <ul class="sub-menu">
-                            <li class="mega-title menu-item-has-children">
-                                <h5 class="menu-title">Shop Layouts</h5>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Sidebar Left</a></li>
-                                    <li><a href="#">Sidebar Right</a></li>
-                                    <li><a href="#">Full Width</a></li>
-                                    <li><a href="#">List View</a></li>
-                                </ul>
-                            </li>
-                            <li class="mega-title menu-item-has-children">
-                                <h5 class="menu-title">Shop Layouts</h5>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Sidebar Left</a></li>
-                                    <li><a href="#">Sidebar Right</a></li>
-                                    <li><a href="#">Full Width</a></li>
-                                    <li><a href="#">List View</a></li>
-                                </ul>
-                            </li>
-                            <li class="mega-title menu-item-has-children">
-                                <h5 class="menu-title">Shop Layouts</h5>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Sidebar Left</a></li>
-                                    <li><a href="#">Sidebar Right</a></li>
-                                    <li><a href="#">Full Width</a></li>
-                                    <li><a href="#">List View</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <li class="menu-item-has-children"><a href="{{route('shop')}}">Shop</a>
                     </li>
                     <li><a href="#">About</a></li>
                     <li class="menu-item-has-children"><a href="#">Page</a>
