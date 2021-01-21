@@ -131,7 +131,7 @@
             <div class="row">
                 <div class="col-lg-2 sticky-block">
                     <div class="menu-logo">
-                        <a href="{{route('home')}}"><img src="frontend/assets/images/logo.png" alt="Logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('frontend/assets/images/logo.png')}}" alt="Logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -240,7 +240,7 @@
                     <a class="mobile-menu-open" href="javascript:void(0)"><i class="lni lni-menu"></i></a>
                 </div>
                 <div class="mobile-logo">
-                    <a href="{{route('home')}}"><img src="frontend/assets/images/logo.png" alt="Logo"></a>
+                    <a href="{{route('home')}}"><img src="{{asset('frontend/assets/images/logo.png')}}" alt="Logo"></a>
                 </div>
                 <div class="header-shop-cart">
                     <ul>

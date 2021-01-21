@@ -19,7 +19,8 @@ Route::get('/',[\App\Http\Controllers\IndexController::class,'home'])->name('hom
 //product category
 Route::get('product-category/{slug}/',[\App\Http\Controllers\IndexController::class,'productCategory'])->name('product.category');
 
-
+//Product details
+Route::get('product-detail/{slug}/',[\App\Http\Controllers\IndexController::class,'productDetail'])->name('product.detail');
 
 //aboutus
 Route::get('about-us',[\App\Http\Controllers\IndexController::class,'aboutUs'])->name('about.us');
@@ -29,6 +30,7 @@ Route::get('contact',[\App\Http\Controllers\IndexController::class,'contact'])->
 
 //shop
 Route::get('shop',[\App\Http\Controllers\IndexController::class,'shop'])->name('shop');
+Route::post('shop-filter',[\App\Http\Controllers\IndexController::class,'shopFilter'])->name('shop.filter');
 
 //cart
 Route::get('cart',[\App\Http\Controllers\IndexController::class,'cart'])->name('cart');
