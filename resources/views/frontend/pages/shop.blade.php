@@ -27,15 +27,21 @@
                         </div>
                         <div class="filter pt-10 d-flex align-items-center">
                             <span class="sort">Sort by:</span>
-                            <form action="{{route('shop.filter')}}" method="post">
-                                @csrf
-                                <select name="sortBy" onchange="this.form.submit();">
-                                    <option value="">Default</option>
-                                    <option value="priceAsc" @if( !empty($_GET['sortBy']) && $_GET['sortBy'] =='priceAsc' ) selected @endif>Price - Low to High</option>
-                                    <option value="priceDesc" @if( !empty($_GET['sortBy']) && $_GET['sortBy'] =='priceDesc' ) selected @endif>Price - High to Low</option>
-                                    <option value="titleAsc" @if( !empty($_GET['sortBy']) && $_GET['sortBy'] =='titleAsc' ) selected @endif>Alphabetical</option>
-                                    <option value="discAsc" @if( !empty($_GET['sortBy']) && $_GET['sortBy'] =='discAsc' ) selected @endif>% Off - Low to High</option>
-                                    <option value="discDesc" @if( !empty($_GET['sortBy']) && $_GET['sortBy'] =='discDesc' ) selected @endif>% Off - High to Low</option>
+                            <form action="">
+                                <select id="sortby" class="form-control">
+
+                                    @if($sort == "low")
+                                        <option value="low" selected>Lowest</option>
+                                    @else
+                                        <option value="low">Lowest</option>
+                                    @endif
+                                    @if($sort == "high")
+                                        <option value="high" selected>Higest</option>
+                                    @else
+                                        <option value="high">Higest</option>
+                                    @endif
+
+
                                 </select>
                             </form>
                         </div>
@@ -81,4 +87,16 @@
     </section>
 
 
+@endsection
+
+@section('scripts')
+    <script>
+       $(document).ready(function(){
+           $("#sortby").change(function(){
+
+               var sort = $("#sortby").val();
+               window.location = "{{url(''.$route.'')}}/{{$category->slug}}?sort=" + sort;
+           });
+       });
+    </script>
 @endsection
