@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 //Frontend Section
 Route::get('/',[\App\Http\Controllers\IndexController::class,'home'])->name('home');
 
+//User auth section
+Route::get('user/login',[\App\Http\Controllers\IndexController::class,'userLoginForm'])->name('user.login.form');
+Route::get('user/register',[\App\Http\Controllers\IndexController::class,'userRegisterForm'])->name('user.register.form');
+
+Route::post('user/login',[\App\Http\Controllers\IndexController::class,'userLoginSubmit'])->name('user.login.submit');
+Route::post('user/register',[\App\Http\Controllers\IndexController::class,'userRegisterSubmit'])->name('user.register.submit');
+
+
+Route::get('user/logout',[\App\Http\Controllers\IndexController::class,'userLogout'])->name('user.logout');
 //product category
 Route::get('product-category/{slug}/',[\App\Http\Controllers\IndexController::class,'productCategory'])->name('product.category');
 
@@ -33,7 +42,9 @@ Route::get('shop',[\App\Http\Controllers\IndexController::class,'shop'])->name('
 Route::post('shop-filter',[\App\Http\Controllers\IndexController::class,'shopFilter'])->name('shop.filter');
 
 //cart
-Route::get('cart',[\App\Http\Controllers\IndexController::class,'cart'])->name('cart');
+Route::get('cart',[\App\Http\Controllers\Frontend\CartController::class,'index'])->name('cart');
+Route::post('cart/store',[\App\Http\Controllers\Frontend\CartController::class,'cartStore'])->name('cart.store');
+Route::post('cart/delete',[\App\Http\Controllers\Frontend\CartController::class,'cartDelete'])->name('cart.delete');
 
 //wishlist
 Route::get('wishlist',[\App\Http\Controllers\IndexController::class,'wishlist'])->name('wishlist');
@@ -58,7 +69,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 //Admin dashboard
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function(){
    Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
 
     // Banner Section
@@ -83,4 +94,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::resource('/user',\App\Http\Controllers\UserController::class);
     Route::post('user_status',[\App\Http\Controllers\UserController::class,'userStatus'])->name('user.status');
 
+});
+
+//Vendor dashboard
+Route::group(['prefix'=>'seller','middleware'=>['auth','seller']],function() {
+    Route::get('/',[\App\Http\Controllers\SellerController::class,'index'])->name('seller');
 });

@@ -7,7 +7,11 @@
 </head>
 
 <body>
-
+<div class="row">
+    <div class="col-12">
+        @include('backend.layouts.notification')
+    </div>
+</div>
 <div class="preloader">
     <div class="loader">
         <div class="ytp-spinner">
@@ -25,8 +29,9 @@
     </div>
 </div>
 
-@include('frontend.layouts.header')
-
+<header class="header-area" id="header-ajax">
+    @include('frontend.layouts.header')
+</header>
 @include('frontend.layouts.nav')
 
 @yield('content')
@@ -174,6 +179,37 @@
 
 
 @include('frontend.layouts.script')
+<script>
+    $(document).on('click','.cart_delete',function(e){
+        e.preventDefault();
+        var cart_id=$(this).data('id');
+        var token="{{csrf_token()}}";
+        var path="{{route('cart.delete')}}";
+
+        $.ajax({
+            url:path,
+            type:"POST",
+            dataType:"JSON",
+            data:{
+                cart_id:cart_id,
+                _token:token,
+            },
+            success:function (data) {
+                if(data['success']){
+                    $('body #cart-counter').html(data['cart_count']);
+                    $('body #header-ajax').html(data['header']);
+                    swal("Good job!", "Cart successfully deleted", "success");
+                }
+                else{
+                    swal("Sorry!","Something went wrong, Please try again","error");
+                }
+            },
+            error:function (err) {
+                swal("Sorry!",err,"error");
+            }
+        })
+    })
+</script>
 </body>
 
 </html>

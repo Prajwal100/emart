@@ -28,60 +28,25 @@
                         <div class="filter pt-10 d-flex align-items-center">
                             <span class="sort">Sort by:</span>
                             <form action="">
-                                <select id="sortby" class="form-control">
-
-                                    @if($sort == "low")
-                                        <option value="low" selected>Lowest</option>
-                                    @else
-                                        <option value="low">Lowest</option>
-                                    @endif
-                                    @if($sort == "high")
-                                        <option value="high" selected>Higest</option>
-                                    @else
-                                        <option value="high">Higest</option>
-                                    @endif
-
-
+                                <select id="sortBy" class="form-control">
+                                    <option value="">Default sortion</option>
+                                    <option value="priceAsc" >Price - Low to High</option>
+                                    <option value="priceDesc" >Price - High to Low</option>
+                                    <option value="titleAsc" >Ascending Alphabetical</option>
+                                    <option value="titleDes" >Descending Alphabetical</option>
+                                    <option value="discAsc" >Discount Low to High</option>
+                                    <option value="discDesc" >Discount High to Low</option>
                                 </select>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-               @if(count($category->products)>0)
-                   @foreach($category->products as $product)
-                        <div class="col-lg-3 col-md-6">
-                            <div class="product-card text-center mt-30">
-                                <div class="product-image">
-                                    @php
-                                    $photo=explode(',',$product->photo);
-
-                                    @endphp
-                                    <img src="{{$photo[0]}}" alt="product">
-                                    <div class="sticker new">
-                                        @if($product->conditions=='new')
-                                        <span>New</span>
-
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h5 class="product-name"><a href="product-details.html">{{$product->title}}</a></h5>
-                                    <span class="price">${{number_format($product->price,2)}}</span>
-                                    <ul class="actions">
-                                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter"><i
-                                                    class="lni lni-eye"></i></a></li>
-                                        <li><a href="#"><i class="lni lni-heart"></i></a></li>
-                                        <li><a href="#"><i class="lni lni-shuffle"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="alert alert-danger">No product found</div>
-                @endif
+            <div class="row" id="product-data">
+                @include('frontend.layouts._single-product')
+            </div>
+            <div class="ajax-load text-center" style="display:none;">
+                <img src="{{asset('frontend/assets/images/loader.gif')}}" alt="Loading">
             </div>
         </div>
     </section>
@@ -91,12 +56,40 @@
 
 @section('scripts')
     <script>
-       $(document).ready(function(){
-           $("#sortby").change(function(){
+        $('#sortBy').change(function(){
+            var sort=$('#sortBy').val();
+            // alert(sort);
+            window.location="{{url(''.$route.'')}}/{{$category->slug}}?sort="+sort;
+        });
+    </script>
 
-               var sort = $("#sortby").val();
-               window.location = "{{url(''.$route.'')}}/{{$category->slug}}?sort=" + sort;
-           });
-       });
+    <script>
+        function loadMoreData(page) {
+            $.ajax({
+                url:'?page='+page,
+                type:'get',
+                beforeSend:function(){
+                    $('.ajax-load').show();
+                }
+            }).done(function (data) {
+                if(data.html==''){
+                    $('.ajax-load').html('No more products');
+                    return;
+                }
+                $('.ajax-load').hide();
+                $('#product-data').append(data.html);
+            })
+            .fail(function(){
+                alert('Something went wrong! please try again');
+            });
+        }
+
+        var page=1;
+        $(window).scroll(function(){
+            if($(window).scrollTop()+$(window).height()+150 >=$(document).height()) {
+                page ++;
+                loadMoreData(page);
+            }
+        });
     </script>
 @endsection
