@@ -1,104 +1,127 @@
-<footer class="footer-area">
-    <div class="footer-widget pt-40 pb-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer-address pt-35">
-                        <h4 class="footer-title">CONTACT US</h4>
-                        <ul>
-                            <li>
-                                <div class="single-address d-flex">
-                                    <div class="address-icon">
-                                        <i class="lni lni-home"></i>
-                                    </div>
-                                    <div class="address-content media-body">
-                                        <p class="text">888 6th 10001 Oakwood Avenue, New York City, NY</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="single-address d-flex">
-                                    <div class="address-icon">
-                                        <i class="lni lni-phone"></i>
-                                    </div>
-                                    <div class="address-content media-body">
-                                        <p class="text">212-631-5135</p>
-                                        <p class="text">212-631-5105</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="single-address d-flex">
-                                    <div class="address-icon">
-                                        <i class="lni lni-envelope"></i>
-                                    </div>
-                                    <div class="address-content media-body">
-                                        <p class="text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                           data-cfemail="e192808d8492a1848c809395cf828e8c">[email&#160;protected]</a>
-                                        </p>
-                                        <p class="text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                           data-cfemail="e99a9c9999869b9da98c84889b9dc78a8684">[email&#160;protected]</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+<footer class="footer_area section_padding_100_0">
+    <div class="container">
+        <div class="row">
+            <!-- Single Footer Area -->
+            <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                <div class="single_footer_area mb-100">
+                    <div class="footer_heading mb-4">
+                        <h6>Contact Us</h6>
+                    </div>
+                    <ul class="footer_content">
+                        <li><span>Address:</span> Lords, London, UK - 1259</li>
+                        <li><span>Phone:</span> 002 63695 24624</li>
+                        <li><span>FAX:</span> 002 78965 369552</li>
+                        <li><span>Email:</span> support@example.com</li>
+                    </ul>
+                    <div class="footer_social_area mt-15">
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer-link pt-35">
-                        <h4 class="footer-title">USEFUL LINKS</h4>
-                        <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">404 Page</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Compare</a></li>
-                        </ul>
+            </div>
+
+            <!-- Single Footer Area -->
+            <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                <div class="single_footer_area mb-100">
+                    <div class="footer_heading mb-4">
+                        <h6>Information</h6>
+                    </div>
+                    <ul class="footer_widget_menu">
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Your Account</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Free Shipping Policy</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Your Cart</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Return Policy</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Free Coupon</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Delivary Info</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Single Footer Area -->
+            <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                <div class="single_footer_area mb-100">
+                    <div class="footer_heading mb-4">
+                        <h6>Account</h6>
+                    </div>
+                    <ul class="footer_widget_menu">
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Product Support</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Terms &amp; Conditions</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Help</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Payment Method</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Affiliate Program</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Single Footer Area -->
+            <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-2">
+                <div class="single_footer_area mb-100">
+                    <div class="footer_heading mb-4">
+                        <h6>Support</h6>
+                    </div>
+                    <ul class="footer_widget_menu">
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Payment Method</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Help</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Product Support</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Terms &amp; Conditions</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i> Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Single Footer Area -->
+            <div class="col-12 col-md-7 col-lg-8 col-xl-3">
+                <div class="single_footer_area mb-50">
+                    <div class="footer_heading mb-4">
+                        <h6>Join our mailing list</h6>
+                    </div>
+                    <div class="subscribtion_form">
+                        <form action="#" method="post">
+                            <input type="email" name="mail" class="form-control mail"
+                                   placeholder="Your E-mail Addrees">
+                            <button type="submit" class="submit"><i class="icofont-long-arrow-right"></i></button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-tag pt-35">
-                        <h4 class="footer-title mb-25">PRODUCT TAGS</h4>
-                        <a href="#">Accessories</a>
-                        <a href="#">Bags</a>
-                        <a href="#">Bestseller</a>
-                        <a href="#">Handpicked</a>
-                        <a href="#">Dresses</a>
-                        <a href="#">Men Fashion</a>
-                        <a href="#">Sell Off</a>
-                        <a href="#">Shoes</a>
-                        <a href="#">Specials</a>
-                        <a href="#">Tops</a>
-                        <a href="#">Women Fashion</a>
+                <div class="single_footer_area mb-100">
+                    <div class="footer_heading mb-4">
+                        <h6>Download our Mobile Apps</h6>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-newsletter pt-35">
-                        <h4 class="footer-title mb-25">NEWSLETTER</h4>
-                        <p class="text">Quisque a nunc interdum tellus placerat cursus. Quisque facilisis dapibus
-                            facilisis! Vivamus dictum lectus ut porta volutpat.</p>
-                        <div class="newsletter-form mt-15">
-                            <form action="#">
-                                <input type="text" placeholder="Enter Email">
-                                <button class="main-btn">Subscribe</button>
-                            </form>
-                        </div>
+                    <div class="apps_download">
+                        <a href="#"><img src="img/core-img/play-store.png" alt="Play Store"></a>
+                        <a href="#"><img src="img/core-img/app-store.png" alt="Apple Store"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-copyright pt-10 pb-20">
+
+    <!-- Footer Bottom -->
+    <div class="footer_bottom_area">
         <div class="container">
-            <div class="copyright-payment d-md-flex align-items-center justify-content-between">
-                <div class="copyright text-center pt-10">
-                    <p class="text">All copyrights reserved © {{date('Y')}} - Developed by <a rel="nofollow"
-                                                                                                href="https://raiprajwal.com/">Prajwal Rai</a></p>
+            <div class="row align-items-center">
+                <!-- Copywrite -->
+                <div class="col-12 col-md-6">
+                    <div class="copywrite_text">
+                        <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">Designing
+                                World</a></p>
+                    </div>
                 </div>
-                <div class="payment text-center pt-10">
-                    <img src="frontend/assets/images/payment.png" alt="payment">
+                <!-- Payment Method -->
+                <div class="col-12 col-md-6">
+                    <div class="payment_method">
+                        <img src="img/payment-method/paypal.png" alt="">
+                        <img src="img/payment-method/maestro.png" alt="">
+                        <img src="img/payment-method/western-union.png" alt="">
+                        <img src="img/payment-method/discover.png" alt="">
+                        <img src="img/payment-method/american-express.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>

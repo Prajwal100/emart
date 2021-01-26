@@ -28,11 +28,11 @@ class UsersTableSeeder extends Seeder
             ],
 //            Seller
             [
-                'full_name'=>'Prajwal Seller',
-                'username'=>'seller',
-                'email'=>'seller@gmail.com',
+                'full_name'=>'Prajwal Vendor',
+                'username'=>'vendor',
+                'email'=>'vendor@gmail.com',
                 'password'=>Hash::make('1111'),
-                'role'=>'seller',
+                'role'=>'vendor',
                 'status'=>'active',
             ],
 //            Customer

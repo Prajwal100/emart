@@ -1,296 +1,214 @@
-
-
-
-<div class="header-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="header-top-content d-sm-flex justify-content-between">
-                    <div class="header-info text-center">
-                        <p>Telephone Enquiry: (012) 800 456 789 – 987</p>
+<header class="header_area">
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-6">
+                    <div class="welcome-note">
+                            <span class="popover--text" data-toggle="popover"
+                                  data-content="Welcome to Bigshop ecommerce template."><i
+                                    class="icofont-info-square"></i></span>
+                        <span class="text">Welcome to E-mart ecommerce website.</span>
                     </div>
-                    <div class="header-info text-center">
-                        <ul>
-                            @if(Auth::check())
-                                <li><a href="#">My account</a></li>
-                                <li><a href="{{route('user.logout')}}">Logout</a></li>
-                            @else
-                                <li><a href="{{route('user.login.form')}}">Login</a></li>
-                                <li><a href="{{route('user.register.form')}}">Register</a></li>
-                            @endif
+                </div>
+                <div class="col-6">
+                    <div class="language-currency-dropdown d-flex align-items-center justify-content-end">
+                        <!-- Language Dropdown -->
+                        <div class="language-dropdown">
+                            <div class="dropdown">
+                                <a class="btn btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenu1"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    English
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                    <a class="dropdown-item" href="#">Bangla</a>
+                                    <a class="dropdown-item" href="#">Arabic</a>
+                                </div>
+                            </div>
+                        </div>
 
-                            <li><a href="{{route('checkout')}}">Checkout</a></li>
-                        </ul>
+                        <!-- Currency Dropdown -->
+                        <div class="currency-dropdown">
+                            <div class="dropdown">
+                                <a class="btn btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenu2"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    $ USD
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                                    <a class="dropdown-item" href="#">৳ BDT</a>
+                                    <a class="dropdown-item" href="#">€ Euro</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="header-logo-search d-none d-lg-block">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="header-logo">
-                    <a href="{{route('home')}}">
-                        <img src="{{asset('frontend/assets/images/logo.png')}}" alt="Logo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="header-search-shop-cart  d-flex justify-content-between">
-                    <div class="header-search d-flex">
-                        <div class="search-categories">
-                            <div class="categories-dropdown">
-                                <div class="cate-toggler">
-                                    <span>All Categories</span>
-                                    <i class="lni lni-chevron-down"></i>
-                                </div>
-                                <ul class="cate-dropdown-menu">
-                                    <li><a href="#">All Categories</a></li>
-                                    <li><a href="#">Uncategorized</a></li>
-                                    <li><a href="#">Cameras & Camcoders</a></li>
-                                    <li><a href="#">Computer & Networking</a></li>
-                                    <li><a href="#">Games & Consoles</a></li>
-                                    <li><a href="#">Headphone & Speaker</a></li>
-                                    <li><a href="#">Movies & Video Games</a></li>
-                                    <li><a href="#">Smartphone</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="search-form">
-                            <form action="#" class="d-flex">
-                                <input type="text" placeholder="Search here...">
-                                <button>Search</button>
-                            </form>
-                        </div>
+
+    <!-- Main Menu -->
+    <div class="bigshop-main-menu">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <nav class="classy-navbar" id="bigshopNav">
+
+                    <!-- Nav Brand -->
+                    <a href="{{route('home')}}" class="nav-brand"><img src="{{asset('frontend/img/core-img/logo.png')}}" alt="logo"></a>
+
+                    <!-- Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
-                    <div class="header-shop-cart">
-                        <ul>
-                            <li>
-                                <a class="single-cart" href="{{route('wishlist')}}">
-                                    <i class="lni lni-heart"></i>
-                                    <span class="shop-quantity">0</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="single-cart" href="#">
-                                            <span class="cart">
-                                                <i class="lni lni-cart"></i>
-                                                <span class="shop-quantity cart-counter">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count()}}</span>
-                                                <span class="cart-subtotal"><span
-                                                        class="currencySymbol">$</span>{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
-                                            </span>
-                                </a>
-                                <div class="cart-box">
-                                    <div class="popup-container">
-                                        <ul>
-                                            @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
 
-                                                <li>
-                                                <div class="cart-entry d-flex row-{{$item->rowId}}">
-                                                    <div class="cart-image" >
-                                                        <a href="#"><img src="{{$item->model->photo}}"
-                                                                         alt="product"></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <a href="" class="product-name">{{ucfirst($item->name)}}</a>
-                                                        <p class="qty">Quantity: {{$item->qty}}</p>
-                                                        <span class="Price">${{$item->price}}</span>
-                                                    </div>
-                                                    <a href="javascript:void(0);" data-id="{{$item->rowId}}"  class="cart_delete cart-close"><i
-                                                            class="lni lni-close"></i></a>
-                                                </div>
-                                            </li>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Close -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
 
-                                            @endforeach
+                        <!-- Nav -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="{{route('home')}}">Home</a>
+                                </li>
+                                <li><a href="#">Shop</a>
+                                </li>
+                                <li><a href="#">Pages</a>
+                                    <div class="megamenu">
+                                        <ul class="single-mega cn-col-4">
+                                            <li><a href="about-us.html">- About Us</a></li>
+                                            <li><a href="faq.html">- FAQ</a></li>
+                                            <li><a href="contact.html">- Contact</a></li>
+                                            <li><a href="login.html">- Login &amp; Register</a></li>
+                                            <li><a href="404.html">- 404</a></li>
+                                            <li><a href="500.html">- 500</a></li>
                                         </ul>
-                                        <div class="sub-total d-flex justify-content-between">
-                                            <p class="title">Sub Total</p>
-                                            <span class="price">${{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
-                                        </div>
-                                        <div class="cart-btn d-flex justify-content-between">
-                                            <a href="{{route('cart')}}" class="main-btn btn-border">view Cart</a>
-                                            <a href="{{route('checkout')}}" class="main-btn">Checkout</a>
+                                        <ul class="single-mega cn-col-4">
+                                            <li><a href="my-account.html">- Dashboard</a></li>
+                                            <li><a href="order-list.html">- Orders</a></li>
+                                            <li><a href="downloads.html">- Downloads</a></li>
+                                            <li><a href="addresses.html">- Addresses</a></li>
+                                            <li><a href="account-details.html">- Account Details</a></li>
+                                            <li><a href="coming-soon.html">- Coming Soon</a></li>
+                                        </ul>
+                                        <div class="single-mega cn-col-2">
+                                            <div class="megamenu-slides owl-carousel">
+                                                <a href="shop-grid-left-sidebar.html">
+                                                    <img src="frontend/img/bg-img/mega-slide-2.jpg" alt="">
+                                                </a>
+                                                <a href="shop-list-left-sidebar.html">
+                                                    <img src="frontend/img/bg-img/mega-slide-1.jpg" alt="">
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="header-menu-area d-none d-lg-block">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2 sticky-block">
-                <div class="menu-logo">
-                    <a href="{{route('home')}}"><img src="{{asset('frontend/assets/images/logo.png')}}" alt="Logo"></a>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="navbar-menu">
-                    <ul>
-                        <li>
-                            <a class="{{\Request::is('/') ? 'active' : ''}}" href="{{route('home')}}">Home</a>
-                        </li>
-                        <li><a class="{{\Request::is('shop') ? 'active' : ''}}" href="{{route('shop')}}">Shop</a>
-                        </li>
-                        <li><a class="{{\Request::is('about-us') ? 'active' : ''}}" href="{{route('about.us')}}">About</a></li>
-                        <li><a href="#">Page</a>
-                            <ul class="sub-menu">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="category.html">Category</a></li>
-                                <li><a href="shop.html">Shop</a></li>
-                                <li><a href="shop-right.html">Shop Right</a></li>
-                                <li><a href="product-details.html">Product Details</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="order-tracking.html">order tracking</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="team.html">Team</a></li>
-                                <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="error.html">Error</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="{{\Request::is('blog') ? 'active' : ''}}" href="{{route('blog')}}">Blog</a>
-                        </li>
-                        <li><a class="{{\Request::is('contact') ? 'active' : ''}}" href="{{route('contact')}}">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 sticky-block">
-                <div class="header-shop-cart">
-                    <ul>
-                        <li>
-                            <a class="single-cart" href="#">
-                                <i class="lni lni-heart"></i>
-                                <span class="shop-quantity cart-counter" id="cart-counter">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count()}}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="single-cart" href="#">
-                                        <span class="cart">
-                                            <i class="lni lni-cart"></i>
-                                            <span class="shop-quantity" id="cart-counter">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count()}}</span>
-                                            <span class="cart-subtotal"><span class="currencySymbol">$</span>{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
-                                        </span>
-                            </a>
-                            <div class="cart-box">
-                                <div class="popup-container">
-                                    <ul>
-                                        @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
-
-                                            <li>
-                                                <div class="cart-entry d-flex row-{{$item->rowId}}">
-                                                    <div class="cart-image" >
-                                                        <a href="#"><img src="{{$item->model->photo}}"
-                                                                         alt="product"></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <a href="" class="product-name">{{ucfirst($item->name)}}</a>
-                                                        <p class="qty">Quantity: {{$item->qty}}</p>
-                                                        <span class="Price">${{$item->price}}</span>
-                                                    </div>
-                                                    <a href="javascript:void(0);" data-id="{{$item->rowId}}"  class="cart_delete cart-close"><i
-                                                            class="lni lni-close"></i></a>
-                                                </div>
-                                            </li>
-
-                                        @endforeach
+                                </li>
+                                <li><a href="#">Blog</a>
+                                    <ul class="dropdown">
+                                        <li><a href="blog-with-left-sidebar.html">Blog Left Sidebar</a></li>
+                                        <li><a href="blog-with-right-sidebar.html">Blog Right Sidebar</a></li>
+                                        <li><a href="blog-with-no-sidebar.html">Blog No Sidebar</a></li>
+                                        <li><a href="single-blog.html">Single Blog</a></li>
                                     </ul>
-                                    <div class="sub-total d-flex justify-content-between">
-                                        <p class="title">Sub Total</p>
-                                        <span class="price">${{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
-                                    </div>
-                                    <div class="cart-btn d-flex justify-content-between">
-                                        <a href="{{route('cart')}}" class="main-btn btn-border">view Cart</a>
-                                        <a href="{{route('checkout')}}" class="main-btn">Checkout</a>
-                                    </div>
-                                </div>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Hero Meta -->
+                    <div class="hero_meta_area ml-auto d-flex align-items-center justify-content-end">
+                        <!-- Search -->
+                        <div class="search-area">
+                            <div class="search-btn"><i class="icofont-search"></i></div>
+                            <!-- Form -->
+                            <div class="search-form">
+                                <input type="search" class="form-control" placeholder="Search">
+                                <input type="submit" class="d-none" value="Send">
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="header-mobile-menu d-lg-none">
-    <div class="container">
-        <div class="mobile-menu d-flex justify-content-between align-items-center">
-            <div class="menu-bar">
-                <a class="mobile-menu-open" href="javascript:void(0)"><i class="lni lni-menu"></i></a>
-            </div>
-            <div class="mobile-logo">
-                <a href="{{route('home')}}"><img src="{{asset('frontend/assets/images/logo.png')}}" alt="Logo"></a>
-            </div>
-            <div class="header-shop-cart">
-                <ul>
-                    <li>
-                        <a class="single-cart" href="#">
-                            <i class="lni lni-heart"></i>
-                            <span class="shop-quantity">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="single-cart" href="#">
-                                    <span class="cart">
-                                        <i class="lni lni-cart"></i>
-                                        <span class="shop-quantity">2</span>
-                                        <span class="cart-subtotal"><span class="currencySymbol">$</span>0.00</span>
-                                    </span>
-                        </a>
-                        <div class="cart-box">
-                            <div class="popup-container">
-                                <ul>
+                        </div>
+
+                        <!-- Wishlist -->
+                        <div class="wishlist-area">
+                            <a href="wishlist.html" class="wishlist-btn"><i class="icofont-heart"></i></a>
+                        </div>
+
+                        <!-- Cart -->
+                        <div class="cart-area">
+                            <div class="cart--btn"><i class="icofont-cart"></i> <span class="cart_quantity">2</span>
+                            </div>
+
+                            <!-- Cart Dropdown Content -->
+                            <div class="cart-dropdown-content">
+                                <ul class="cart-list">
                                     <li>
-                                        <div class="cart-entry d-flex">
-                                            <div class="cart-image">
-                                                <a href="#"><img src="frontend/assets/images/product-menu-1.jpg"
-                                                                 alt="product"></a>
+                                        <div class="cart-item-desc">
+                                            <a href="#" class="image">
+                                                <img src="frontend/img/product-img/top-1.png" class="cart-thumb" alt="">
+                                            </a>
+                                            <div>
+                                                <a href="#">Kid's Fashion</a>
+                                                <p>1 x - <span class="price">$32.99</span></p>
                                             </div>
-                                            <div class="cart-content">
-                                                <a href="#" class="product-name">Pullover Batwing</a>
-                                                <p class="qty">Quantity: 3</p>
-                                                <span class="Price">$45.00</span>
-                                            </div>
-                                            <a href="#" class="cart-close"><i class="lni lni-close"></i></a>
                                         </div>
+                                        <span class="dropdown-product-remove"><i class="icofont-bin"></i></span>
                                     </li>
                                     <li>
-                                        <div class="cart-entry d-flex">
-                                            <div class="cart-image">
-                                                <a href="#"><img src="frontend/assets/images/product-menu-2.jpg"
-                                                                 alt="product"></a>
+                                        <div class="cart-item-desc">
+                                            <a href="#" class="image">
+                                                <img src="frontend/img/product-img/best-4.png" class="cart-thumb" alt="">
+                                            </a>
+                                            <div>
+                                                <a href="#">Headphone</a>
+                                                <p>2x - <span class="price">$49.99</span></p>
                                             </div>
-                                            <div class="cart-content">
-                                                <a href="#" class="product-name">Pullover Batwing</a>
-                                                <p class="qty">Quantity: 3</p>
-                                                <span class="Price">$45.00</span>
-                                            </div>
-                                            <a href="#" class="cart-close"><i class="lni lni-close"></i></a>
                                         </div>
+                                        <span class="dropdown-product-remove"><i class="icofont-bin"></i></span>
                                     </li>
                                 </ul>
-                                <div class="sub-total d-flex justify-content-between">
-                                    <p class="title">Sub Total</p>
-                                    <span class="price">$210.00</span>
+                                <div class="cart-pricing my-4">
+                                    <ul>
+                                        <li>
+                                            <span>Sub Total:</span>
+                                            <span>$822.96</span>
+                                        </li>
+                                        <li>
+                                            <span>Shipping:</span>
+                                            <span>$30.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Total:</span>
+                                            <span>$856.63</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="cart-btn d-flex justify-content-between">
-                                    <a href="#" class="main-btn btn-border">view Cart</a>
-                                    <a href="#" class="main-btn">Checkout</a>
+                                <div class="cart-box">
+                                    <a href="checkout-1.html" class="btn btn-primary d-block">Checkout</a>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                </ul>
+
+                        <!-- Account -->
+                        <div class="account-area">
+                            <div class="user-thumbnail">
+                                <img src="frontend/img/bg-img/user.jpg" alt="">
+                            </div>
+                            <ul class="user-meta-dropdown">
+                                @auth
+                                <li class="user-title"><span>Hello,</span> Lim Sarah</li>
+                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="order-list.html">Orders List</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="login.html"><i class="icofont-logout"></i> Logout</a></li>
+                                @else
+                                    <li><a href="{{route('user.auth')}}">Login & Register</a></li>
+                                @endauth
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
     </div>
-</div>
+</header>
