@@ -36,6 +36,7 @@ Route::get('product-detail/{slug}/',[\App\Http\Controllers\Frontend\IndexControl
 //Endfrontend section
 
 
+
 Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
@@ -71,4 +72,13 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function(){
 
 Route::group(['prefix'=>'seller','middleware'=>['auth','seller']],function() {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'admin'])->name('seller');
+});
+
+
+//User Dashboard
+Route::group(['prefix'=>'user'],function (){
+    Route::get('/dashboard',[\App\Http\Controllers\Frontend\IndexController::class,'userDashboard'])->name('user.dashboard');
+    Route::get('/order',[\App\Http\Controllers\Frontend\IndexController::class,'userOrder'])->name('user.order');
+    Route::get('/address',[\App\Http\Controllers\Frontend\IndexController::class,'userAddress'])->name('user.address');
+    Route::get('/account-detail',[\App\Http\Controllers\Frontend\IndexController::class,'userAccount'])->name('user.account');
 });

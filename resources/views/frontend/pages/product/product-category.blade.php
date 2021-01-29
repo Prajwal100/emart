@@ -103,91 +103,71 @@
                                 <a href="shop-list-left-sidebar.html" data-toggle="tooltip" data-placement="top" title="List View"><i class="icofont-listine-dots"></i></a>
                             </div>
                         </div>
-                        <select class="small right">
-                            <option selected>Short by Popularity</option>
-                            <option value="1">Short by Newest</option>
-                            <option value="2">Short by Sales</option>
-                            <option value="3">Short by Ratings</option>
+                        <select id="sortBy" class="small right">
+                            <option selected>Default Sort</option>
+                            <option value="priceAsc" {{old('sortBy')=='priceAsc' ? 'selected' : ''}}>Price - Lower To Higher</option>
+                            <option value="priceDesc">Price - Higher To Lower</option>
+                            <option value="titleAsc">Alphabetical Ascending</option>
+                            <option value="titleDesc">Alphabetical Descending</option>
+                            <<option value="discAsc">Discount - Lower To Higher</option>
+                            <option value="discDesc">Discount - Higher To Lower</option>
                         </select>
                     </div>
 
                     <div class="shop_grid_product_area">
-                        <div class="row justify-content-center">
-                            <!-- Single Product -->
-                            @if(count($categories->products)>0)
-                                @foreach($categories->products as $item)
-                                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                        <div class="single-product-area mb-30">
-                                            <div class="product_image">
-                                                @php
-                                                $photo=explode(',',$item->photo);
-                                                @endphp
-                                                <!-- Product Image -->
-                                                <img class="normal_img" src="{{$photo[0]}}" alt="">
-                                                <!-- Product Badge -->
-                                                <div class="product_badge">
-                                                    <span>{{$item->conditions}}</span>
-                                                </div>
+                        <div class="row justify-content-center" id="product-data">
 
-                                                <!-- Wishlist -->
-                                                <div class="product_wishlist">
-                                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                                </div>
+                        @include('frontend.layouts._single-product')
 
-                                                <!-- Compare -->
-                                                <div class="product_compare">
-                                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                                </div>
-                                            </div>
 
-                                            <!-- Product Description -->
-                                            <div class="product_description">
-                                                <!-- Add to cart -->
-                                                <div class="product_add_to_cart">
-                                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                                </div>
-
-                                                <!-- Quick View -->
-                                                <div class="product_quick_view">
-                                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                                </div>
-
-                                                <p class="brand_name">{{\App\Models\Brand::where('id',$item->brand_id)->value('title')}}</p>
-                                                <a href="{{route('product.detail',$item->slug)}}">{{ucfirst($item->title)}}</a>
-                                                <h6 class="product-price">${{number_format($item->offer_price,2)}} <small><del class="text-danger">${{number_format($item->price,2)}}</del></small></h6>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @else
-                                <p>No product found</p>
-                            @endif
-
-                    <!-- Shop Pagination Area -->
-                    <div class="shop_pagination_area mt-30">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination pagination-sm justify-content-center">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
+                        </div>
                     </div>
-
+                    <div class="ajax-load text-center" style="display: none">
+                        <img src="{{asset('frontend/img/loader.gif')}}" style="width:6%;">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script>
+        $('#sortBy').change(function () {
+            var sort=$('#sortBy').val();
+
+            window.location="{{url(''.$route.'')}}/{{$categories->slug}}?sort="+sort;
+        });
+    </script>
+
+    <script>
+        function loadmoreData(page) {
+            $.ajax({
+                url:'?page='+page,
+                type:'get',
+                beforeSend:function () {
+                    $('.ajax-load').show();
+                },
+            })
+            .done(function(data){
+                if(data.html==''){
+                    $('.ajax-load').html('No more product available');
+                    return;
+                }
+                $('.ajax-load').hide();
+                $('#product-data').append(data.html);
+            })
+            .fail(function () {
+                alert('Something went wrong! please try again');
+            });
+        }
+
+        var page=1;
+        $(window).scroll(function () {
+            if($(window).scrollTop() +$(window).height()+120>=$(document).height()){
+                page ++;
+                loadmoreData(page);
+            }
+        })
+    </script>
 @endsection
