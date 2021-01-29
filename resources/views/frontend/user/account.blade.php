@@ -31,26 +31,37 @@
                     <div class="my-account-content mb-50">
                         <h5 class="mb-3">Account Details</h5>
 
-                        <form action="#" method="post">
+                        <form action="{{route('update.account',$user->id)}}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="firstName">First Name *</label>
                                         <input type="text" class="form-control" id="firstName" name="full_name" value="{{$user->full_name}}" placeholder="eg. Prajwal Rai">
+                                        @error('full_name')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="displayName">Display Name</label>
                                         <input type="text" class="form-control" id="displayName" value="{{$user->username}}" name="username" placeholder="eg. Raidai">
+                                        @error('username')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="displayName">Phone Number</label>
                                         <input type="text" class="form-control" id="displayName" placeholder="eg. 9807009889" name="phone" value="{{$user->phone}}">
+                                        @error('phone')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="emailAddress">Email Address *</label>
@@ -60,19 +71,19 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="currentPass">Current Password (Leave blank to leave unchanged)</label>
-                                        <input type="password" class="form-control" id="currentPass">
-                                    </div>
+                                        <input type="password" class="form-control" id="currentPass" name="oldpassword">
+
+                                        @error('oldpassword')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror</div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="newPass">New Password (Leave blank to leave unchanged)</label>
-                                        <input type="password" class="form-control" id="newPass">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="confirmPass">Confirm New Password</label>
-                                        <input type="password" class="form-control" id="confirmPass">
+                                        <input type="password" class="form-control" id="newPass" name="newpassword">
+                                        @error('newpassword')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
