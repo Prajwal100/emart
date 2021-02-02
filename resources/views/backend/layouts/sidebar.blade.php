@@ -101,8 +101,8 @@
                         </li>
                         <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-check"></i><span>Coupon Management</span> </a>
                             <ul>
-                                <li><a href="departments.html">All Departments</a></li>
-                                <li><a href="add-departments.html">Add Departments</a></li>
+                                <li><a href="{{route('coupon.index')}}">All Departments</a></li>
+                                <li><a href="{{route('coupon.create')}}">Add Departments</a></li>
                             </ul>
                         </li>
                         <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-people"></i><span>User Management</span> </a>

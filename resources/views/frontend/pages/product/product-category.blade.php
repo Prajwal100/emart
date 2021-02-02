@@ -132,6 +132,7 @@
 @endsection
 
 @section('scripts')
+
     <script>
         $('#sortBy').change(function () {
             var sort=$('#sortBy').val();
@@ -154,8 +155,10 @@
                     $('.ajax-load').html('No more product available');
                     return;
                 }
-                $('.ajax-load').hide();
-                $('#product-data').append(data.html);
+                else{
+                    $('.ajax-load').hide();
+                    $('#product-data').append(data.html);
+                }
             })
             .fail(function () {
                 alert('Something went wrong! please try again');
@@ -169,5 +172,115 @@
                 loadmoreData(page);
             }
         })
+    </script>
+{{--Add to cart--}}
+    <script>
+        $(document).on('click','.add_to_cart',function(e){
+            e.preventDefault();
+            var product_id=$(this).data('product-id');
+            var product_qty=$(this).data('quantity');
+
+            var token="{{csrf_token()}}";
+            var path="{{route('cart.store')}}";
+
+            $.ajax({
+                url:path,
+                type:"POST",
+                dataType:"JSON",
+                data:{
+                    product_id:product_id,
+                    product_qty:product_qty,
+                    _token:token,
+                },
+                beforeSend:function () {
+                    $('#add_to_cart'+product_id).html('<i class="fa fa-spinner fa-spin"></i> Loading....');
+                },
+                complete:function () {
+                    $('#add_to_cart'+product_id).html('<i class="fa fa-cart-plus"></i> Add to Cart');
+                },
+                success:function (data) {
+                    console.log(data);
+
+                    if(data['status']){
+                        $('body #header-ajax').html(data['header']);
+                        $('body #cart_counter').html(data['cart_count']);
+                        swal({
+                            title: "Good job!",
+                            text: data['message'],
+                            icon: "success",
+                            button: "OK!",
+                        });
+
+                    }
+                },
+                error:function (err) {
+                    console.log(err);
+                }
+            });
+        });
+    </script>
+{{--Add to wishlist--}}
+    <script>
+        $(document).on('click','.add_to_wishlist',function(e){
+            e.preventDefault();
+            var product_id=$(this).data('id');
+            var product_qty=$(this).data('quantity');
+
+            var token="{{csrf_token()}}";
+            var path="{{route('wishlist.store')}}";
+
+            $.ajax({
+                url:path,
+                type:"POST",
+                dataType:"JSON",
+                data:{
+                    product_id:product_id,
+                    product_qty:product_qty,
+                    _token:token,
+                },
+                beforeSend:function () {
+                    $('#add_to_wishlist_'+product_id).html('<i class="fa fa-spinner fa-spin"></i>');
+                },
+                complete:function () {
+                    $('#add_to_wishlist_'+product_id).html('<i class="fas fa-heart"></i> Add to Cart');
+                },
+                success:function (data) {
+                    console.log(data);
+
+                    if(data['status']){
+                        $('body #header-ajax').html(data['header']);
+                        $('body #wishlist_counter').html(data['wishlist_count']);
+                        swal({
+                            title: "Good job!",
+                            text: data['message'],
+                            icon: "success",
+                            button: "OK!",
+                        });
+
+                    }
+                    else if(data['present']){
+                        $('body #header-ajax').html(data['header']);
+                        $('body #wishlist_counter').html(data['wishlist_count']);
+                        swal({
+                            title: "Opps!",
+                            text: data['message'],
+                            icon: "warning",
+                            button: "OK!",
+                        });
+                    }
+                    else{
+                        swal({
+                            title: "Sorry!",
+                            text: "You can't add that product",
+                            icon: "error",
+                            button: "OK!",
+                        });
+                    }
+                },
+                error:function (err) {
+                    console.log(err);
+                }
+            });
+        });
     </script>
 @endsection

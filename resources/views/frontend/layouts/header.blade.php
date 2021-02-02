@@ -1,4 +1,4 @@
-<header class="header_area">
+
     <!-- Top Header Area -->
     <div class="top-header-area">
         <div class="container h-100">
@@ -131,60 +131,57 @@
 
                         <!-- Wishlist -->
                         <div class="wishlist-area">
-                            <a href="wishlist.html" class="wishlist-btn"><i class="icofont-heart"></i></a>
+                            <a href="{{route('wishlist')}}" class="wishlist-btn"><i class="icofont-heart"></i></a>
                         </div>
 
                         <!-- Cart -->
                         <div class="cart-area">
-                            <div class="cart--btn"><i class="icofont-cart"></i> <span class="cart_quantity">2</span>
+                            <div class="cart--btn"><i class="icofont-cart"></i> <span class="cart_quantity" id="cart_counter">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count()}}</span>
                             </div>
 
                             <!-- Cart Dropdown Content -->
                             <div class="cart-dropdown-content">
                                 <ul class="cart-list">
-                                    <li>
-                                        <div class="cart-item-desc">
-                                            <a href="#" class="image">
-                                                <img src="frontend/img/product-img/top-1.png" class="cart-thumb" alt="">
-                                            </a>
-                                            <div>
-                                                <a href="#">Kid's Fashion</a>
-                                                <p>1 x - <span class="price">$32.99</span></p>
+
+                                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
+                                        <li>
+                                            <div class="cart-item-desc">
+                                                <a href="#" class="image">
+                                                    <img src="{{$item->model->photo}}" class="cart-thumb" alt="">
+                                                </a>
+                                                <div>
+                                                    <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
+                                                    <p>{{$item->qty}} x - <span class="price">${{number_format($item->price,2)}}</span></p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <span class="dropdown-product-remove"><i class="icofont-bin"></i></span>
-                                    </li>
-                                    <li>
-                                        <div class="cart-item-desc">
-                                            <a href="#" class="image">
-                                                <img src="frontend/img/product-img/best-4.png" class="cart-thumb" alt="">
-                                            </a>
-                                            <div>
-                                                <a href="#">Headphone</a>
-                                                <p>2x - <span class="price">$49.99</span></p>
-                                            </div>
-                                        </div>
-                                        <span class="dropdown-product-remove"><i class="icofont-bin"></i></span>
-                                    </li>
+                                            <span class="dropdown-product-remove cart_delete" data-id="{{$item->rowId}}"><i class="icofont-bin"></i></span>
+                                        </li>
+                                    @endforeach
+
                                 </ul>
                                 <div class="cart-pricing my-4">
                                     <ul>
                                         <li>
                                             <span>Sub Total:</span>
-                                            <span>$822.96</span>
+                                            <span>${{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
                                         </li>
-                                        <li>
-                                            <span>Shipping:</span>
-                                            <span>$30.00</span>
-                                        </li>
+{{--                                        <li>--}}
+{{--                                            <span>Shipping:</span>--}}
+{{--                                            <span>$30.00</span>--}}
+{{--                                        </li>--}}
                                         <li>
                                             <span>Total:</span>
-                                            <span>$856.63</span>
+                                            @if(session()->has('coupon'))
+                                                <span>${{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'],2)}}</span>
+                                            @else
+                                                <span>${{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
+                                            @endif
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="cart-box">
-                                    <a href="checkout-1.html" class="btn btn-primary d-block">Checkout</a>
+                                <div class="cart-box d-flex">
+                                    <a href="{{route('cart')}}" class="btn btn-success btn-sm">Cart</a>
+                                    <a href="{{route('checkout1')}}" class="btn btn-primary btn-sm float-right">Checkout</a>
                                 </div>
                             </div>
                         </div>
@@ -222,4 +219,4 @@
             </div>
         </div>
     </div>
-</header>
+

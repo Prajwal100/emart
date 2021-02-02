@@ -32,6 +32,25 @@ Route::get('product-category/{slug}/',[\App\Http\Controllers\Frontend\IndexContr
 //Product detail
 Route::get('product-detail/{slug}/',[\App\Http\Controllers\Frontend\IndexController::class,'productDetail'])->name('product.detail');
 
+//Cart section
+Route::get('cart',[\App\Http\Controllers\Frontend\CartController::class,'cart'])->name('cart');
+Route::post('cart/store',[\App\Http\Controllers\Frontend\CartController::class,'cartStore'])->name('cart.store');
+Route::post('cart/delete',[\App\Http\Controllers\Frontend\CartController::class,'cartDelete'])->name('cart.delete');
+Route::post('cart/update',[\App\Http\Controllers\Frontend\CartController::class,'cartUpdate'])->name('cart.update');
+
+//coupon section
+Route::post('coupon/add',[\App\Http\Controllers\Frontend\CartController::class,'couponAdd'])->name('coupon.add');
+
+
+//wishlist section
+Route::get('wishlist',[\App\Http\Controllers\Frontend\WishlistController::class,'wishlist'])->name('wishlist');
+Route::post('wishlist/store',[\App\Http\Controllers\Frontend\WishlistController::class,'wishlistStore'])->name('wishlist.store');
+Route::post('wishlist/move-to-cart',[\App\Http\Controllers\Frontend\WishlistController::class,'moveToCart'])->name('wishlist.move.cart');
+Route::post('wishlist/delete',[\App\Http\Controllers\Frontend\WishlistController::class,'wishlistDelete'])->name('wishlist.delete');
+
+//Checkout Section
+Route::get('checkout1',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkout1'])->name('checkout1')->middleware('user');
+
 
 //Endfrontend section
 
@@ -40,6 +59,8 @@ Route::get('product-detail/{slug}/',[\App\Http\Controllers\Frontend\IndexControl
 Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+
 
 //Admin dashboard
 
@@ -67,6 +88,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function(){
     // User Section
     Route::resource('/user',\App\Http\Controllers\UserController::class);
     Route::post('user_status',[\App\Http\Controllers\UserController::class,'userStatus'])->name('user.status');
+
+    // Coupon Section
+    Route::resource('/coupon',\App\Http\Controllers\CouponController::class);
+    Route::post('coupon_status',[\App\Http\Controllers\CouponController::class,'couponStatus'])->name('coupon.status');
+
 
 });
 
