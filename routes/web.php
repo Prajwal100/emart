@@ -50,7 +50,11 @@ Route::post('wishlist/delete',[\App\Http\Controllers\Frontend\WishlistController
 
 //Checkout Section
 Route::get('checkout1',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkout1'])->name('checkout1')->middleware('user');
-
+Route::post('checkout-first',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkout1Store'])->name('checkout1.store');
+Route::post('checkout-two',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkout2Store'])->name('checkout2.store');
+Route::post('checkout-three',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkout3Store'])->name('checkout3.store');
+Route::get('checkout-store',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkoutStore'])->name('checkout.store');
+Route::get('complete/{order}',[\App\Http\Controllers\Frontend\CheckoutController::class,'complete'])->name('complete');
 
 //Endfrontend section
 
@@ -92,6 +96,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function(){
     // Coupon Section
     Route::resource('/coupon',\App\Http\Controllers\CouponController::class);
     Route::post('coupon_status',[\App\Http\Controllers\CouponController::class,'couponStatus'])->name('coupon.status');
+
+    // Shipping Section
+    Route::resource('/shipping',\App\Http\Controllers\ShippingController::class);
+    Route::post('shipping_status',[\App\Http\Controllers\ShippingController::class,'shippingStatus'])->name('shipping.status');
 
 
 });

@@ -67,10 +67,10 @@
                                 <li><a href="{{route('product.create')}}">Add Product</a></li>
                             </ul>
                         </li>
-                        <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-basket-loaded"></i><span>Carts Management</span> </a>
+                        <li><a href="javascript:void(0);" class="has-arrow"><i class="fas fa-truck"></i><span>Shipping Management</span> </a>
                             <ul>
-                                <li><a href="departments.html">All Departments</a></li>
-                                <li><a href="add-departments.html">Add Departments</a></li>
+                                <li><a href="{{route('shipping.index')}}">All Shippings</a></li>
+                                <li><a href="{{route('shipping.create')}}">Add Shipping</a></li>
                             </ul>
                         </li>
                         <li><a href="app-inbox.html"><i class="icon-layers"></i>Order Management</a></li>

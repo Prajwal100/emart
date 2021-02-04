@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <h5>Checkout</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                         <li class="breadcrumb-item active">Checkout</li>
                     </ol>
                 </div>
@@ -31,112 +31,129 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="checkout_details_area clearfix">
-                        <h5 class="mb-4">Billing Details</h5>
-                        <form action="#" method="post">
-                            <div class="row">
-                                @php
-                                    $name=explode(' ',$user->full_name);
-                                @endphp
-                                <div class="col-md-6 mb-3">
-                                    <label for="first_name">First Name</label>
-                                    <input type="text" class="form-control" id="first_name" placeholder="First Name" value="{{$name[0]}}" required name="first_name">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="last_name">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name" placeholder="Last Name" value="{{$name[1]}}" name="last_name" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="email_address">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address"  name="email" value="{{$user->email}}" readonly>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="phone_number">Phone Number</label>
-                                    <input type="number" class="form-control" id="phone" min="0" value="{{$user->phone}}" name="phone">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="country">Country</label>
-                                    <input type="text" class="form-control" name="country" value="{{$user->country}}" placeholder="eg. Nepal">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="street_address">Street address</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Street Address" value="{{$user->address}}" name="address">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="city">Town/City</label>
-                                    <input type="text" class="form-control" id="city" name="city"  placeholder="Town/City" value="{{$user->city}}">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="state">State</label>
-                                    <input type="text" class="form-control" id="state" placeholder="State" value="{{$user->state}}" name="state">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="postcode">Postcode/Zip</label>
-                                    <input type="text" class="form-control" id="postcode" placeholder="Postcode / Zip" value="{{$user->postcode}}" name="postcode">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="order-notes">Order Notes</label>
-                                    <textarea class="form-control" id="order-notes" cols="30" rows="10" name="note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                </div>
-                            </div>
-
-                            <!-- Different Shipping Address -->
-                            <div class="different-address mt-50">
-                                <div class="ship-different-title mb-3">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Ship to a same address?</label>
-                                    </div>
-                                </div>
-                                <div class="row shipping_input_field">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <form action="{{route('checkout1.store')}}" method="post">
+                @csrf
+                    <div class="col-12">
+                        <div class="checkout_details_area clearfix">
+                            <h5 class="mb-4">Billing Details</h5>
+                                <div class="row">
+                                    @php
+                                        $name=explode(' ',$user->full_name);
+                                    @endphp
                                     <div class="col-md-6 mb-3">
                                         <label for="first_name">First Name</label>
-                                        <input type="text" class="form-control" id="sfirst_name" placeholder="First Name" value="{{$name[0]}}" required name="sfirst_name">
+                                        <input type="text" class="form-control" id="first_name" placeholder="First Name" value="{{$name[0]}}" required name="first_name">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="last_name">Last Name</label>
-                                        <input type="text" class="form-control" id="slast_name" placeholder="Last Name" value="{{$name[1]}}" name="slast_name" required>
+                                        <input type="text" class="form-control" id="last_name" placeholder="Last Name" value="{{$name[1]}}" name="last_name" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="email_address">Email Address</label>
-                                        <input type="email" class="form-control" id="semail" placeholder="Email Address"  name="semail" value="{{$user->email}}">
+                                        <input type="email" class="form-control" id="email" placeholder="Email Address"  name="email" value="{{$user->email}}" readonly>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="phone_number">Phone Number</label>
-                                        <input type="number" class="form-control" id="sphone" min="0" value="{{$user->phone}}" name="sphone" placeholder="Phone number">
+                                        <input type="number" class="form-control" id="phone" min="0" value="{{$user->phone}}" name="phone">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="country">Country</label>
-                                        <input type="text" class="form-control" id="scountry" name="scountry" value="{{$user->scountry}}" placeholder="eg. Nepal">
+                                        <input type="text" class="form-control" id="country" name="country" value="{{$user->country}}" placeholder="eg. Nepal">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="street_address">Street address</label>
-                                        <input type="text" class="form-control" id="saddress" placeholder="Street Address" value="{{$user->saddress}}" name="saddress">
+                                        <input type="text" class="form-control" id="address" placeholder="Street Address" value="{{$user->address}}" name="address">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="city">Town/City</label>
-                                        <input type="text" class="form-control" id="scity" name="scity"  placeholder="Town/City" value="{{$user->scity}}">
+                                        <input type="text" class="form-control" id="city" name="city"  placeholder="Town/City" value="{{$user->city}}">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="state">State</label>
-                                        <input type="text" class="form-control" id="sstate" placeholder="State" value="{{$user->sstate}}" name="sstate">
+                                        <input type="text" class="form-control" id="state" placeholder="State" value="{{$user->state}}" name="state">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="postcode">Postcode/Zip</label>
-                                        <input type="text" class="form-control" id="spostcode" placeholder="Postcode / Zip" value="{{$user->spostcode}}" name="spostcode">
+                                        <input type="text" class="form-control" id="postcode" placeholder="Postcode / Zip" value="{{$user->postcode}}" name="postcode">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="order-notes">Order Notes</label>
+                                        <textarea class="form-control" id="order-notes" cols="30" rows="10" name="note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
 
-                <div class="col-12">
-                    <div class="checkout_pagination d-flex justify-content-end mt-50">
-                        <a href="checkout-1.html" class="btn btn-primary mt-2 ml-2">Go Back</a>
-                        <a href="checkout-3.html" class="btn btn-primary mt-2 ml-2">Continue</a>
+                                <!-- Different Shipping Address -->
+                                <div class="different-address mt-50">
+                                    <div class="ship-different-title mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Ship to a same address?</label>
+                                        </div>
+                                    </div>
+                                    <div class="row shipping_input_field">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="first_name">First Name</label>
+                                            <input type="text" class="form-control" id="sfirst_name" placeholder="First Name" value="{{$name[0]}}" required name="sfirst_name">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="last_name">Last Name</label>
+                                            <input type="text" class="form-control" id="slast_name" placeholder="Last Name" value="{{$name[1]}}" name="slast_name" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email_address">Email Address</label>
+                                            <input type="email" class="form-control" id="semail" placeholder="Email Address"  name="semail" value="{{$user->email}}">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="phone_number">Phone Number</label>
+                                            <input type="number" class="form-control" id="sphone" min="0" value="{{$user->phone}}" name="sphone" placeholder="Phone number">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="country">Country</label>
+                                            <input type="text" class="form-control" id="scountry" name="scountry" value="{{$user->scountry}}" placeholder="eg. Nepal">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="street_address">Street address</label>
+                                            <input type="text" class="form-control" id="saddress" placeholder="Street Address" value="{{$user->saddress}}" name="saddress">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="city">Town/City</label>
+                                            <input type="text" class="form-control" id="scity" name="scity"  placeholder="Town/City" value="{{$user->scity}}">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="state">State</label>
+                                            <input type="text" class="form-control" id="sstate" placeholder="State" value="{{$user->sstate}}" name="sstate">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="postcode">Postcode/Zip</label>
+                                            <input type="text" class="form-control" id="spostcode" placeholder="Postcode / Zip" value="{{$user->spostcode}}" name="spostcode">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
-                </div>
+                    <input type="hidden" name="sub_total" value="{{(float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->subtotal())}}">
+                    <input type="hidden" name="total_amount" value="{{(float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->subtotal())}}">
+
+                    <div class="col-12">
+                        <div class="checkout_pagination d-flex justify-content-end mt-50">
+                            <a href="{{route('cart')}}" class="btn btn-primary mt-2 ml-2">Go Back</a>
+                            <button type="submit" class="btn btn-primary mt-2 ml-2">Continue</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
