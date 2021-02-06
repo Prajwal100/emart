@@ -56,6 +56,15 @@ Route::post('checkout-three',[\App\Http\Controllers\Frontend\CheckoutController:
 Route::get('checkout-store',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkoutStore'])->name('checkout.store');
 Route::get('complete/{order}',[\App\Http\Controllers\Frontend\CheckoutController::class,'complete'])->name('complete');
 
+
+//Shop section
+Route::get('shop',[\App\Http\Controllers\Frontend\IndexController::class,'shop'])->name('shop');
+
+
+
+
+
+
 //Endfrontend section
 
 
