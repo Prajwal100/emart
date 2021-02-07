@@ -36,6 +36,27 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
+    $(document).ready(function () {
+        var path="{{route('autosearch')}}";
+        $('#search_text').autocomplete({
+            source:function (request,response) {
+                $.ajax({
+                    url:path,
+                    dataType:"JSON",
+                    data:{
+                        term:request.term
+                    },
+                    success:function (data) {
+                        response(data);
+                    }
+                });
+            },
+            minLength:1,
+        });
+
+    });
+</script>
+<script>
     $(document).on('click','.cart_delete',function(e){
         e.preventDefault();
         var cart_id=$(this).data('id');

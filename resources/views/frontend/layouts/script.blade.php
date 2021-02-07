@@ -14,6 +14,10 @@
 <script src="{{asset('frontend/assets/js/jarallax-video.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
+
+{{--autosearch--}}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset('frontend/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/active.js')}}"></script>

@@ -52,6 +52,6 @@
         @endif
 
     </div>
-    {{$products->links('vendor.pagination.custom')}}
+    {{$products->appends($_GET)->links('vendor.pagination.custom')}}
 
 </div>

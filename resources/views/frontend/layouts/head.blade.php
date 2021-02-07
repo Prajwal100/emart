@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="{{asset('frontend/assets/css/fontawesome-all.min.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/assets/css/icofont.min.css')}}">
 
+{{--autocomplete--}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- Style CSS -->
 <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
