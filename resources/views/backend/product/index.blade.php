@@ -69,7 +69,8 @@
                                                 <input type="checkbox" name="toogle" value="{{$item->id}}" data-toggle="switchbutton" {{$item->status=='active' ? 'checked' : ''}} data-onlabel="active" data-offlabel="inactive" data-size="sm" data-onstyle="success" data-offstyle="danger">
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0);"  data-toggle="modal" data-target="#productID{{$item->id}}" data-toggle="tooltip" title="view" class="float-left btn btn-sm btn-outline-secondary" data-placement="bottom"><i class="fas fa-eye"></i> </a>
+                                                <a href="{{route('product.show',$item->id)}}" data-toggle="tooltip" title="add attribute" class="float-left btn btn-sm btn-outline-secondary mr-1 mb-1" data-placement="bottom"><i class="fas fa-plus-circle"></i> </a>
+                                                <a href="javascript:void(0);"  data-toggle="modal" data-target="#productID{{$item->id}}" data-toggle="tooltip" title="view" class="mr-1 float-left btn btn-sm btn-outline-info" data-placement="bottom"><i class="fas fa-eye"></i> </a>
                                                 <a href="{{route('product.edit',$item->id)}}" data-toggle="tooltip" title="edit" class="float-left btn btn-sm btn-outline-warning" data-placement="bottom"><i class="fas fa-edit"></i> </a>
                                                 <form class="float-left ml-1" action="{{route('product.destroy',$item->id)}}"  method="post">
                                                     @csrf
