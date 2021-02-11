@@ -31,6 +31,11 @@ Route::get('product-category/{slug}/',[\App\Http\Controllers\Frontend\IndexContr
 
 //Product detail
 Route::get('product-detail/{slug}/',[\App\Http\Controllers\Frontend\IndexController::class,'productDetail'])->name('product.detail');
+Route::get('/get-product-price/{id}',[\App\Http\Controllers\ProductController::class,'filterPriceWithSize']);
+
+
+//Product Review
+Route::post('product-review/{slug}',[\App\Http\Controllers\ProductReviewController::class,'productReview'])->name('product.review');
 
 //Cart section
 Route::get('cart',[\App\Http\Controllers\Frontend\CartController::class,'cart'])->name('cart');

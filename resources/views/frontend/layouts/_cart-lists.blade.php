@@ -8,6 +8,7 @@
                     <th scope="col"><i class="icofont-ui-delete"></i></th>
                     <th scope="col">Image</th>
                     <th scope="col">Product</th>
+                    <th scope="col">Product Size</th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
@@ -22,8 +23,12 @@
                         <td>
                             <img src="{{$item->model->photo}}" alt="Product">
                         </td>
+
                         <td>
                             <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
+                        </td>
+                        <td>
+                            {{$item->options->has('size') ? $item->options->size : ''}}
                         </td>
                         <td>${{$item->price}}</td>
                         <td>

@@ -52,7 +52,7 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
                                             <label for="">Description</label>
-                                            <textarea id="description" class="form-control" placeholder="Write some text..." name="description">{{$product->description}}</textarea>
+                                            <textarea id="description" class="form-control description" placeholder="Write some text..." name="description">{{$product->description}}</textarea>
                                         </div>
                                     </div>
 
@@ -89,6 +89,21 @@
                                                 <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$product->photo}}">
                                             </div>
                                             <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Size Guide</label>
+                                            <div class="input-group">
+                                           <span class="input-group-btn">
+                                             <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-primary">
+                                               <i class="fa fa-picture-o"></i> Choose
+                                             </a>
+                                           </span>
+                                                <input id="thumbnail1" class="form-control" type="text" name="size_guide" value="{{$product->size_guide}}">
+                                            </div>
+                                            <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
                                         </div>
                                     </div>
 
@@ -144,6 +159,21 @@
                                         </select>
                                     </div>
 
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Additional Information</label>
+                                            <textarea id="description" class="form-control description" placeholder="Write some text..." name="additional_info">{{$product->additional_info}}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Return & Cancellation</label>
+                                            <textarea id="description" class="form-control description" placeholder="Write some text..." name="return_cancellation">{{$product->return_cancellation}}</textarea>
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-lg-12 col-sm-12">
                                         <label for="status">Status</label>
                                         <select name="status" class="form-control show-tick">
@@ -169,12 +199,12 @@
 @section('scripts')
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
-        $('#lfm').filemanager('image');
+        $('#lfm,#lfm1').filemanager('image');
     </script>
 
     <script>
         $(document).ready(function() {
-            $('#description').summernote();
+            $('.description').summernote();
         });
     </script>
 
