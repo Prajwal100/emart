@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            $table->enum('role',['admin','seller','customer'])->default('customer');
             $table->enum('status',['active','inactive'])->default('active');
 
 

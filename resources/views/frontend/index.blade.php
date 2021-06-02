@@ -176,7 +176,7 @@
                             <div class="product_description">
                                 <!-- Add to cart -->
                                 <div class="product_add_to_cart">
-                                    <a href="#" data-quantity="1" data-product-id="{{$nproduct->id}}" class="add_to_cart" id="add_to_cart{{$nproduct->id}}"><i class="icofont-shopping-cart"></i> Add to Cart</a>
+                                    <a href="#" data-price="{{$nproduct->offer_price}}" data-quantity="1" data-product-id="{{$nproduct->id}}" class="add_to_cart" id="add_to_cart{{$nproduct->id}}"><i class="icofont-shopping-cart"></i> Add to Cart</a>
                                 </div>
 
                                 <!-- Quick View -->
@@ -1509,7 +1509,7 @@
             e.preventDefault();
             var product_id=$(this).data('product-id');
             var product_qty=$(this).data('quantity');
-
+            var product_price=$(this).data('price');
             var token="{{csrf_token()}}";
             var path="{{route('cart.store')}}";
 
@@ -1520,6 +1520,7 @@
                 data:{
                     product_id:product_id,
                     product_qty:product_qty,
+                    product_price:product_price,
                     _token:token,
                 },
                 beforeSend:function () {

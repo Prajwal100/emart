@@ -15,33 +15,23 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        //Customer
         DB::table('users')->insert([
-
-//            Admin
-            [
-                'full_name'=>'Prajwal Admin',
-                'username'=>'Admin',
-                'email'=>'admin@gmail.com',
-                'password'=>Hash::make('1111'),
-                'role'=>'admin',
-                'status'=>'active',
-            ],
-//            Seller
-            [
-                'full_name'=>'Prajwal Seller',
-                'username'=>'seller',
-                'email'=>'seller@gmail.com',
-                'password'=>Hash::make('1111'),
-                'role'=>'seller',
-                'status'=>'active',
-            ],
-//            Customer
             [
                 'full_name'=>'Prajwal Customer',
                 'username'=>'Customer',
                 'email'=>'customer@gmail.com',
-                'password'=>Hash::make('111'),
-                'role'=>'customer',
+                'password'=>Hash::make('1111'),
+                'status'=>'active',
+            ],
+        ]);
+
+        //admin
+        DB::table('admins')->insert([
+            [
+                'full_name'=>'Prajwal Admin',
+                'email'=>'admin@gmail.com',
+                'password'=>Hash::make('1111'),
                 'status'=>'active',
             ],
         ]);
