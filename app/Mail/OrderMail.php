@@ -29,6 +29,6 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.order');
+        return $this->view('mail.order')->subject('New confirm msg by'.$this->details['email']);
     }
 }

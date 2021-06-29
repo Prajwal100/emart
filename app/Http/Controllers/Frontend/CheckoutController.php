@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Mail\OrderMail;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Shipping;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -71,9 +72,8 @@ class CheckoutController extends Controller
     }
 
     public function checkout2Store(Request $request){
-//        return $request->all();
         $this->validate($request,[
-            'delivery_charge'=>'required|numeric'
+            'delivery_charge'=>'nullable|numeric'
         ]);
 
         Session::push('checkout',[
@@ -93,7 +93,7 @@ class CheckoutController extends Controller
 
         Session::push('checkout',[
             'payment_method'=>$request->payment_method,
-            'payment_status'=>'paid',
+            'payment_status'=>'unpaid',
         ]);
 
 //        return Session::get('checkout');
@@ -142,16 +142,24 @@ class CheckoutController extends Controller
 
 
         $status=$order->save();
-            if($status){
-                Mail::to($order['email'])->bcc($order['semail'])->cc('prajwal.iar1819@gmail.com')->send(new OrderMail($order));
-                Cart::instance('shopping')->destroy();
-                Session::forget('coupon');
-                Session::forget('checkout');
-                return redirect()->route('complete',$order['order_number']);
-            }
-            else{
-                return redirect()->route('checkout1')->with('error','Please try again');
-            }
+
+        foreach(Cart::instance('shopping')->content() as $item){
+            $product_id[]=$item->id;
+            $product=Product::find($item->id);
+            $quantity=$item->qty;
+            $order->products()->attach($product,['quantity'=>$quantity]);
+        }
+
+        if($status){
+            Mail::to($order['email'])->bcc($order['semail'])->cc('prajwal.iar1819@gmail.com')->send(new OrderMail($order));
+            Cart::instance('shopping')->destroy();
+            Session::forget('coupon');
+            Session::forget('checkout');
+            return redirect()->route('complete',$order['order_number']);
+        }
+        else{
+            return redirect()->route('checkout1')->with('error','Please try again');
+        }
     }
 
     public function complete($order){

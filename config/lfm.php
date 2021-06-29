@@ -35,6 +35,7 @@ return [
     // Ex: The private folder of user will be named as the user id.
     'private_folder_name'      => UniSharp\LaravelFilemanager\Handlers\ConfigHandler::class,
 
+    'allow_multi_user'  =>true,
     'allow_shared_folder'      => true,
 
     'shared_folder_name'       => 'shares',

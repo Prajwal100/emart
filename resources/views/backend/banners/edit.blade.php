@@ -74,7 +74,6 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <label for="">Condition</label>
                                         <select name="condition" class="form-control show-tick">
-                                            <option value="">-- Conditions --</option>
                                             <option value="banner" {{$banner->condition=='banner' ? 'selected' : ''}}>Banner</option>
                                             <option value="promo" {{$banner->condition == 'promo' ? 'selected' : ''}} >Promote</option>
                                         </select>

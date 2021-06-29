@@ -12,4 +12,8 @@ class Order extends Model
     ,'deliver_charge','coupon','first_name','last_name','email','address','phone','country','state',
         'postcode','city','sfirst_name','slast_name','semail','saddress','sphone','scountry','sstate',
         'spostcode','scity','note'];
+
+    public function products(){
+        return $this->belongsToMany(Product::class,'product_orders')->withPivot('quantity');
+    }
 }

@@ -5,25 +5,16 @@
         </div>
 
         <div class="navbar-brand">
-            <a href="index.html"><img src="{{asset('backend/assets/images/logo.svg')}}" alt="Lucid Logo" class="img-responsive logo"></a>
+            <a href="{{route('admin')}}"><img src="{{asset('backend/assets/images/logo.svg')}}" alt="Lucid Logo" class="img-responsive logo"></a>
         </div>
 
         <div class="navbar-right">
-            <form id="navbar-search" class="navbar-form search-form">
-                <input value="" class="form-control" placeholder="Search here..." type="text">
-                <button type="button" class="btn btn-default"><i class="icon-magnifier"></i></button>
-            </form>
 
             <div id="navbar-menu">
                 <ul class="nav navbar-nav">
+
                     <li>
-                        <a href="file-dashboard.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i class="fa fa-folder-open-o"></i></a>
-                    </li>
-                    <li>
-                        <a href="app-calendar.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i class="icon-calendar"></i></a>
-                    </li>
-                    <li>
-                        <a href="app-chat.html" class="icon-menu d-none d-sm-block"><i class="icon-bubbles"></i></a>
+                        <a href="{{route('home')}}" target="_blank" class="icon-menu d-none d-sm-block"><i class="icon-home"></i></a>
                     </li>
                     <li>
                         <a href="app-inbox.html" class="icon-menu d-none d-sm-block"><i class="icon-envelope"></i><span class="notification-dot"></span></a>
@@ -88,20 +79,6 @@
                                 </a>
                             </li>
                             <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i class="icon-equalizer"></i></a>
-                        <ul class="dropdown-menu user-menu menu-icon">
-                            <li class="menu-heading">ACCOUNT SETTINGS</li>
-                            <li><a href="javascript:void(0);"><i class="icon-note"></i> <span>Basic</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-equalizer"></i> <span>Preferences</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-lock"></i> <span>Privacy</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-bell"></i> <span>Notifications</span></a></li>
-                            <li class="menu-heading">BILLING</li>
-                            <li><a href="javascript:void(0);"><i class="icon-credit-card"></i> <span>Payments</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-printer"></i> <span>Invoices</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-refresh"></i> <span>Renewals</span></a></li>
                         </ul>
                     </li>
                     <li>

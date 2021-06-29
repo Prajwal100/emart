@@ -25,4 +25,8 @@ class Product extends Model
     public function attributes(){
         return $this->hasMany('App\Models\ProductAttribute');
     }
+
+    public function orders(){
+        return $this->belongsToMany(Order::class,'product_orders')->withPivot('quantity');
+    }
 }

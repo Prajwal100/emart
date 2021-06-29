@@ -80,9 +80,9 @@
                 <tr>
                     <td>Total</td>
                     @if(\Illuminate\Support\Facades\Session::has('coupon'))
-                        <td>${{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtota-\Illuminate\Support\Facades\Session::get('coupon')['value']l()),2)}}</td>
+                        <td>${{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()-\Illuminate\Support\Facades\Session::get('coupon')['value']()),2)}}</td>
                     @else
-
+                        <td>${{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()),2)}}</td>
                     @endif
                 </tr>
                 </tbody>
