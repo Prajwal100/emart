@@ -47,7 +47,7 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td><img src="{{$item->photo}}" alt="banner image" style="max-height: 90px; max-width: 120px"></td>
+                                            <td><img src="{{asset($item->photo)}}" alt="category image" style="max-height: 90px; max-width: 120px"></td>
                                             <td>{{$item->is_parent===1 ? 'Yes' : 'No' }}</td>
                                             <td>{{\App\Models\Category::where('id',$item->parent_id)->value('title')}}</td>
                                             <td>

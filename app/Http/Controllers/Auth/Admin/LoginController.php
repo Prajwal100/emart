@@ -13,9 +13,14 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
+        $request->validate([
+            'email'=>'email|required',
+            'password'=>'required|min:4'
+        ]);
         if(Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password])){
             return redirect()->intended(route('admin'))->with('success','You are logged in as admin');
         }
         return back()->withInput($request->only('email'));
     }
+
 }

@@ -12,6 +12,13 @@ Route::get('user/logout',[\App\Http\Controllers\Frontend\IndexController::class,
 
 Route::get('/',[\App\Http\Controllers\Frontend\IndexController::class,'home'])->name('home');
 
+//about us
+Route::get('/about-us',[\App\Http\Controllers\Frontend\IndexController::class,'aboutUs'])->name('about.us');
+
+//contact-us
+Route::get('çontact-us',[\App\Http\Controllers\Frontend\IndexController::class,'contactUs'])->name('contact.us');
+Route::post('contact-submit',[\App\Http\Controllers\Frontend\IndexController::class,'contactSubmit'])->name('contact.submit');
+
 //Product category
 Route::get('product-category/{slug}/',[\App\Http\Controllers\Frontend\IndexController::class,'productCategory'])->name('product.category');
 
@@ -38,6 +45,15 @@ Route::get('wishlist',[\App\Http\Controllers\Frontend\WishlistController::class,
 Route::post('wishlist/store',[\App\Http\Controllers\Frontend\WishlistController::class,'wishlistStore'])->name('wishlist.store');
 Route::post('wishlist/move-to-cart',[\App\Http\Controllers\Frontend\WishlistController::class,'moveToCart'])->name('wishlist.move.cart');
 Route::post('wishlist/delete',[\App\Http\Controllers\Frontend\WishlistController::class,'wishlistDelete'])->name('wishlist.delete');
+
+
+//compare section
+Route::get('compare',[\App\Http\Controllers\Frontend\CompareController::class,'compare'])->name('compare');
+Route::post('compare/store',[\App\Http\Controllers\Frontend\CompareController::class,'compareStore'])->name('compare.store');
+Route::post('compare/move-to-cart',[\App\Http\Controllers\Frontend\CompareController::class,'moveToCart'])->name('compare.move.cart');
+Route::post('compare/move-to-wishlist',[\App\Http\Controllers\Frontend\CompareController::class,'moveToWishlist'])->name('compare.move.wishlist');
+Route::post('compare/delete',[\App\Http\Controllers\Frontend\CompareController::class,'compareDelete'])->name('compare.delete');
+
 
 //Checkout Section
 Route::get('checkout1',[\App\Http\Controllers\Frontend\CheckoutController::class,'checkout1'])->name('checkout1')->middleware('user');

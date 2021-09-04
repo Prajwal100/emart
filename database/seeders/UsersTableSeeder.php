@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         //Customer
         DB::table('users')->insert([
             [
-                'full_name'=>'Prajwal Customer',
+                'full_name'=>'Mr. Customer',
                 'username'=>'Customer',
                 'email'=>'customer@gmail.com',
                 'password'=>Hash::make('1111'),
@@ -29,9 +29,24 @@ class UsersTableSeeder extends Seeder
         //admin
         DB::table('admins')->insert([
             [
-                'full_name'=>'Prajwal Admin',
+                'full_name'=>'Mr. Admin',
                 'email'=>'admin@gmail.com',
                 'password'=>Hash::make('1111'),
+                'status'=>'active',
+            ],
+        ]);
+
+        //seller
+        DB::table('sellers')->insert([
+            [
+                'full_name'=>'Mr. Seller',
+                'username'=>'Mr. Seller',
+                'email'=>'seller@gmail.com',
+                'address'=>'Kathmandu, Nepal',
+                'phone'=>'9877437222',
+                'photo'=>'',
+                'password'=>Hash::make('1111'),
+                'is_verified'=>0,
                 'status'=>'active',
             ],
         ]);

@@ -85,7 +85,7 @@
                 <div class="col-12">
                     <h5>Product Details</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Shop</a></li>
                         <li class="breadcrumb-item active">Product Details</li>
                     </ol>
@@ -111,7 +111,7 @@
                                 @foreach($photos as $key=>$photo)
                                     <div class="carousel-item {{$key==0 ? 'active' : ''}}">
                                         <a class="gallery_img" href="{{$photo}}" title="{{$product->title}}">
-                                            <img class="d-block w-100" src="{{$photo}}" alt="{{$product->title}}">
+                                            <img class="d-block w-100" src="{{asset($photo)}}" alt="{{$product->title}}">
                                         </a>
                                         <!-- Product Badge -->
                                         <div class="product_badge">
@@ -240,14 +240,14 @@
                         </ul>
                         <!-- Tab Content -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade " id="description">
+                            <div role="tabpanel" class="tab-pane fade  show active" id="description">
                                 <div class="description_area">
                                     <h5>Description</h5>
                                     {!! html_entity_decode($product->description) !!}
                                 </div>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane fade show active" id="reviews">
+                            <div role="tabpanel" class="tab-pane fade" id="reviews">
 
                                 <div class="submit_a_review_area mt-50">
                                     <h4>Submit A Review</h4>
@@ -387,7 +387,7 @@
                                             @php
                                                 $photo=explode(',',$item->photo);
                                             @endphp
-                                            <img class="normal_img" src="{{$photo[0]}}" alt="{{$item->title}}">
+                                            <img class="normal_img" src="{{asset($photo[0])}}" alt="{{$item->title}}">
 
                                             <!-- Product Badge -->
                                             <div class="product_badge">
@@ -426,10 +426,10 @@
                                                 </small></h6>
 
                                         </div>
-                                        @endif
                                     </div>
+                                @endif
+                            @endforeach
 
-                                    @endforeach
                         </div>
                     </div>
                 </div>
@@ -485,57 +485,4 @@
         })
     </script>
 
-    <script>
-        $('.qty-text ').change('key up',function () {
-            var id=$(this).data('id');
-            var spinner=$(this),input=spinner.closest('div.quantity').find('input[type="number"]');
-            var newVal=parseFloat(input.val());
-            $('#add_to_cart_button_details_'+id).attr('data-quantity',newVal);
-
-        });
-
-        $('.add_to_cart_button_details').on('click',function () {
-            var product_qty=$(this).data('quantity');
-            var product_id=$(this).data('product_id');
-            var product_size=$(this).data('size');
-            var product_price=$(this).data('price');
-            var token="{{csrf_token()}}";
-            var path="{{route('cart.store')}}";
-
-            $.ajax({
-                url:path,
-                type:"POST",
-                data:{
-                    _token:token,
-                    product_id:product_id,
-                    product_size:product_size,
-                    product_price:product_price,
-                    product_qty:product_qty,
-                },
-                beforeSend:function () {
-                    $('#add_to_cart_button_details_{{$product->id}}').html('<i class="fas fa-spinner fa-spin"></i> Loading...');
-
-                },
-                complete:function () {
-                    $('#add_to_cart_button_details_{{$product->id}}').html('Add To Cart');
-                },
-                success:function (data) {
-                    $('body #header-ajax').html(data['header']);
-                    $('body #cart_counter').html(data['cart_count']);
-                    // swal({
-                    //     title: "Good job!",
-                    //     text: data['message'],
-                    //     icon: "success",
-                    //     button: "OK!",
-                    // });
-
-                    window.location.href=window.location.href;
-
-                },
-                error:function (err) {
-                    console.log(err);
-                }
-            });
-        });
-    </script>
 @endsection

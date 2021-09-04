@@ -1,14 +1,15 @@
 <meta charset="UTF-8">
-<meta name="description" content="">
+<meta name="description" content="{{get_setting('meta_description')}}">
+<meta name="keywords" content="{{get_setting('meta_keywords')}}">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title  -->
-<title>Emart online shopping</title>
+<title>{{get_setting('title')}}</title>
 
 <!-- Favicon  -->
-<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="icon" href="{{asset(get_setting('favicon'))}}">
 
 <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/assets/css/classy-nav.min.css')}}">

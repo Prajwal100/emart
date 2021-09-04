@@ -16,7 +16,6 @@ class BannerController extends Controller
      */
     public function index()
     {
-
         $banners=Banner::orderBy('id','DESC')->get();
         return view('backend.banners.index',compact('banners'));
     }
@@ -52,7 +51,7 @@ class BannerController extends Controller
     {
         $this->validate($request,[
             'title'=>'string|required',
-            'slug'=>'string|required|unique:banners,slug',
+            'slug'=>'string|nullable|unique:banners,slug',
             'description'=>'string|nullable',
             'photo'=>'required',
             'condition'=>'nullable|in:banner,promo',
@@ -109,7 +108,7 @@ class BannerController extends Controller
         if($banner){
             $this->validate($request,[
                 'title'=>'string|required',
-                'slug'=>'string|required|exists:banners,slug',
+                'slug'=>'string|nullable|exists:banners,slug',
                 'description'=>'string|nullable',
                 'photo'=>'required',
                 'condition'=>'nullable|in:banner,promo',

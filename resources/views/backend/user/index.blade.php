@@ -36,7 +36,6 @@
                                         <th>Photo</th>
                                         <th>Full name</th>
                                         <th>Email</th>
-                                        <th>Role</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -46,10 +45,9 @@
                                     @foreach($users as $item)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td><img src="{{$item->photo}}" alt="banner image" style="height:60px;width:60px;border-radius:50%;max-height: 90px; max-width: 120px"></td>
+                                            <td><img src="{{$item->photo ==null ? Helper::userDefaultImage() : asset($item->photo)}}" alt="User image" style="height:60px;width:60px;border-radius:50%;max-height: 90px; max-width: 120px"></td>
                                             <td>{{$item->full_name}}</td>
                                             <td>{{$item->email}}</td>
-                                            <td>{{$item->role}}</td>
                                             <td>
                                                 <input type="checkbox" name="toogle" value="{{$item->id}}" data-toggle="switchbutton" {{$item->status=='active' ? 'checked' : ''}} data-onlabel="active" data-offlabel="inactive" data-size="sm" data-onstyle="success" data-offstyle="danger">
                                             </td>

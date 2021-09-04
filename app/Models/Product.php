@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable=['title','slug','summary','description','additional_info','return_cancellation','size_guide','stock','price','offer_price','discount','conditions','status','photo','vendor_id','brand_id','cat_id','child_cat_id','size'];
+    protected $fillable=['title','slug','is_featured','summary','description','additional_info','return_cancellation','size_guide','stock','price','offer_price','discount','conditions','status','photo','brand_id','cat_id','child_cat_id','size','user_id','added_by'];
 
     public function brand(){
         return $this->belongsTo('App\Models\Brand');
+    }
+
+    public function category(){
+        return $this->belongsTo('App\Models\Category','cat_id','id');
     }
 
     public function rel_prods(){
@@ -28,5 +32,9 @@ class Product extends Model
 
     public function orders(){
         return $this->belongsToMany(Order::class,'product_orders')->withPivot('quantity');
+    }
+
+    public function reviews(){
+        return $this->hasMany(ProductReview::class);
     }
 }

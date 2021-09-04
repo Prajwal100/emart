@@ -10,6 +10,9 @@
         <nav class="sidebar-nav">
             <ul class="main-menu metismenu">
                 <li class="active"><a href="{{route('admin')}}"><i class="icon-grid"></i><span>Dashboard</span></a></li>
+
+                <li class=""><a href="{{route('about.index')}}"><i class="icon-info"></i><span>About Us Content</span></a></li>
+
                 <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-picture"></i><span>Banner Management</span> </a>
                     <ul>
                         <li><a href="{{route('banner.index')}}">All Banners</a></li>
@@ -40,12 +43,27 @@
                         <li><a href="{{route('shipping.create')}}">Add Shipping</a></li>
                     </ul>
                 </li>
+
+                <li><a href="javascript:void(0);" class="has-arrow"><i class="fas fa-money-bill-alt"></i><span>Currency Management</span> </a>
+                    <ul>
+                        <li><a href="{{route('currency.index')}}">All Currencies</a></li>
+                        <li><a href="{{route('currency.create')}}">Add Currency</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="{{route('order.index')}}"><i class="icon-layers"></i>Order Management</a></li>
 
                 <li><a href="javascript:void(0);" class="has-arrow"><i class="fas fa-sitemap"></i><span>Post Category</span> </a>
                     <ul>
                         <li><a href="departments.html">All Departments</a></li>
                         <li><a href="add-departments.html">Add Departments</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-users"></i><span>Seller Management</span> </a>
+                    <ul>
+                        <li><a href="{{route('seller.index')}}">All Seller</a></li>
+{{--                        <li><a href="add-departments.html">Add Departments</a></li>--}}
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-tag"></i><span>Post Tag</span> </a>
@@ -68,14 +86,14 @@
                 </li>
                 <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-check"></i><span>Coupon Management</span> </a>
                     <ul>
-                        <li><a href="{{route('coupon.index')}}">All Departments</a></li>
-                        <li><a href="{{route('coupon.create')}}">Add Departments</a></li>
+                        <li><a href="{{route('coupon.index')}}">All Coupons</a></li>
+                        <li><a href="{{route('coupon.create')}}">Add Coupon</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-people"></i><span>User Management</span> </a>
                     <ul>
-                        <li><a href="{{route('user.index')}}">All Departments</a></li>
-                        <li><a href="{{route('user.create')}}">Add Departments</a></li>
+                        <li><a href="{{route('user.index')}}">All Users</a></li>
+                        <li><a href="{{route('user.create')}}">Add User</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="has-arrow"><i class="icon icon-bubbles"></i><span>Comments Management</span> </a>
@@ -84,7 +102,15 @@
                         <li><a href="add-departments.html">Add Departments</a></li>
                     </ul>
                 </li>
-                <li><a href="app-inbox.html"><i class="icon-settings"></i>Settings</a></li>
+
+
+                <li><a href="javascript:void(0);" class="has-arrow"><i class="icon icon-settings"></i><span>General Settings</span> </a>
+                    <ul>
+                        <li><a href="{{route('settings')}}">Settings</a></li>
+                        <li><a href="{{route('smtp')}}">SMTP Settings</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
 

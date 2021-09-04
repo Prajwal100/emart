@@ -5,7 +5,7 @@
         </div>
 
         <div class="navbar-brand">
-            <a href="{{route('admin')}}"><img src="{{asset('backend/assets/images/logo.svg')}}" alt="Lucid Logo" class="img-responsive logo"></a>
+            <a href="{{route('admin')}}"><img src="{{asset(get_setting('logo'))}}" alt="Lucid Logo" class="img-responsive logo"></a>
         </div>
 
         <div class="navbar-right">

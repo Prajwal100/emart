@@ -28,7 +28,7 @@
                         <form action="{{route('login.submit')}}" method="post">
                             @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="username" placeholder="Email or Username value="{{old('email')}}"">
+                                <input type="email" class="form-control" name="email" id="username" placeholder="Email or Username" value="{{old('email')}}">
                                 @error('email')
                                     <p class="text-danger">{{$message}}</p>
                                 @enderror

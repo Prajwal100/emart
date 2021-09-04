@@ -52,7 +52,7 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td><img src="{{$photo[0]}}" alt="banner image" style="max-height: 90px; max-width: 120px"></td>
+                                            <td><img src="{{asset($photo[0])}}" alt="product image" style="max-height: 90px; max-width: 120px"></td>
                                             <td>${{number_format($item->price,2)}}</td>
                                             <td>{{$item->discount}}%</td>
                                             <td>{{$item->size}}</td>

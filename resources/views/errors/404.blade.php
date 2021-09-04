@@ -1,22 +1,8 @@
-@extends('frontend.layouts.master')
+<head>
+    @include('frontend.layouts.head')
+</head>
 
-@section('content')
-    <!-- Breadcumb Area -->
-    <div class="breadcumb_area">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <h5>404</h5>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">404</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcumb Area -->
-
+<body>
     <!-- Not Found Area -->
     <section class="error_page text-center section_padding_100">
         <div class="container">
@@ -33,4 +19,7 @@
         </div>
     </section>
     <!-- Not Found Area End -->
-@endsection
+    @include('frontend.layouts.script')
+</body>
+
+</html>

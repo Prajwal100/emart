@@ -45,7 +45,7 @@
 
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
-                                            <label for="">URL <span class="text-danger">*</span></label>
+                                            <label for="">URL </label>
                                             <input type="text" class="form-control" placeholder="URL" name="slug" value="{{old('slug')}}">
                                         </div>
                                     </div>

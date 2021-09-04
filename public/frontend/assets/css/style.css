@@ -1148,13 +1148,13 @@ textarea:focus,
   box-shadow: 0 0 88px 8px rgba(47, 91, 234, 0.125); }
 
 #quickview button.close {
-  border: 1px solid #d6e6fb;
-  box-shadow: none;
-  position: absolute;
+  border: 1px solid #d6e6fb !important;
+  box-shadow: none !important;
+  position: absolute !important;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  right: 15px;
+  right: 15px !important;
   text-align: center;
   top: 10px;
   z-index: 9;

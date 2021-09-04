@@ -21,6 +21,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset('frontend/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/active.js')}}"></script>
+<script src="{{asset('frontend/assets/js/share.js')}}"></script>
 
 <script src="{{asset('frontend/assets/js/bootstrap-notify.js')}}"></script>
 

@@ -149,11 +149,12 @@
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <label for="">Vendors</label>
-                                        <select name="vendor_id" class="form-control show-tick">
-                                            <option value="">-- Vendors --</option>
-                                            @foreach(\App\Models\User::where('role','vendor')->get() as $vendor)
-                                                <option value="{{$vendor->id}}" {{old('vendor_id')==$vendor->id? 'selected ' : ''}}>{{$vendor->full_name}}</option>
+                                        <label for="">Added By</label>
+                                        <select name="added_by" class="form-control show-tick">
+                                            <option value="admin" {{old('added_by')=='admin'? 'selected ' : ''}}>Admin</option>
+                                            @foreach(\App\Models\Seller::orderBy('full_name','ASC')->get() as $item)
+                                                <option value="{{$item->full_name}}" {{old('added_by')==$item->full_name ? 'selected ' : ''}}>
+                                                    {{$item->full_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

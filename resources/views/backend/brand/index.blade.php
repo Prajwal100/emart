@@ -47,7 +47,7 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->slug}}</td>
-                                            <td><img src="{{$item->photo}}" alt="banner image" style="max-height: 90px; max-width: 120px"></td>
+                                            <td><img src="{{asset($item->photo)}}" alt="Brand image" style="max-height: 90px; max-width: 120px"></td>
                                             <td>
                                                 <input type="checkbox" name="toogle" value="{{$item->id}}" data-toggle="switchbutton" {{$item->status=='active' ? 'checked' : ''}} data-onlabel="active" data-offlabel="inactive" data-size="sm" data-onstyle="success" data-offstyle="danger">
                                             </td>

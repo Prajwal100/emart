@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Contact;
+use App\Models\AboutUs;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
@@ -19,10 +25,83 @@ class IndexController extends Controller
 {
     public function home(){
         $banners=Banner::where(['status'=>'active','condition'=>'banner'])->orderBy('id','DESC')->limit('5')->get();
+        $promo_banner=Banner::where(['status'=>'active','condition'=>'promo'])->orderBy('id','DESC')->first();
         $categories=Category::where(['status'=>'active','is_parent'=>1])->limit(3)->orderBy('id',"DESC")->get();
+        $new_products=Product::where(['status'=>'active','conditions'=>'new'])->orderBy('id','DESC')->limit('8')->get();
+        $featured_products=Product::where(['status'=>'active','is_featured'=>1])->orderBy('id','DESC')->limit('6')->get();
 
-        return view('frontend.index',compact(['banners','categories']));
+
+        $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
+
+        //best selling product
+        $items=DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy("count",'desc')->get();
+        $product_ids=[];
+        foreach($items as $item){
+            array_push($product_ids,$item->product_id);
+        }
+
+        $idsImplodedSellings =  implode(',',array_fill(0, count($product_ids), '?'));
+
+        if($idsImplodedSellings !=null){
+            $best_sellings=Product::whereIn('id',$product_ids)->orderByRaw("field(id,{$idsImplodedSellings})", $product_ids)->get();
+        }
+        else{
+            $best_sellings=[];
+        }
+
+
+        //Top rated products
+        $items_rated=DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as count'))
+                ->groupBy('product_id')->orderBy("count",'desc')->get();
+        $product_ids=[];
+
+        foreach($items_rated as $item){
+            array_push($product_ids,$item->product_id);
+        }
+
+        $idsImploded =  implode(',',array_fill(0, count($product_ids), '?'));
+
+        if($idsImploded !=null){
+            $best_rated=Product::whereIn('id',$product_ids)->orderByRaw("field(id,{$idsImploded})", $product_ids)->get();
+        }
+        else{
+            $best_rated=[];
+        }
+
+
+        return view('frontend.index',compact([
+            'banners','categories','new_products','featured_products','promo_banner','brands','best_sellings','best_rated'
+        ]));
     }
+
+    public function aboutUs(){
+        $about=AboutUs::first();
+        $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
+        return view('frontend.pages.about_us',compact('about','brands'));
+    }
+
+    public function contactUs(){
+        return view('frontend.pages.contact_us');
+    }
+
+    public function contactSubmit(Request $request){
+        $this->validate($request,[
+            'f_name'=>'string|required',
+            'l_name'=>'string|required',
+            'email'=>'email|required',
+            'subject'=>'min:4|string|required',
+            'message'=>'string|nullable|max:200',
+        ]);
+
+        $data=$request->all();
+
+
+        Mail::to('admin@gmail.com')->send(new Contact($data));
+
+        return back()->with('success','Successfull send your enquiry');
+
+    }
+
 
     public function shop(Request $request){
 

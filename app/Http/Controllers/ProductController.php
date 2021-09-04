@@ -73,9 +73,12 @@ class ProductController extends Controller
         $slug=Str::slug($request->input('title'));
         $slug_count=Product::where('slug',$slug)->count();
         if($slug_count>0){
-            $slug = time().'-'.$slug;
+            $slug = $slug.'-'.Str::random(4);
         }
         $data['slug']=$slug;
+
+        $data['seller_id']=$request->added_by;
+
 
         $data['offer_price']=($request->price-(($request->price*$request->discount)/100));
 

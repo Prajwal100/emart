@@ -50,7 +50,7 @@
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->slug}}</td>
                                             <td>{!! html_entity_decode($item->description) !!}</td>
-                                            <td><img src="{{$item->photo}}" alt="banner image" style="max-height: 90px; max-width: 120px"></td>
+                                            <td><img src="{{asset($item->photo)}}" alt="banner image" style="max-height: 90px; max-width: 120px"></td>
                                             <td>
                                                 @if($item->condition=='banner')
                                                     <span class="badge badge-success">{{$item->condition}}</span>

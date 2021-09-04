@@ -8,18 +8,16 @@
                         <h6>Contact Us</h6>
                     </div>
                     <ul class="footer_content">
-                        <li><span>Address:</span> Lords, London, UK - 1259</li>
-                        <li><span>Phone:</span> 002 63695 24624</li>
-                        <li><span>FAX:</span> 002 78965 369552</li>
-                        <li><span>Email:</span> support@example.com</li>
+                        <li><span>Address:</span> {{\App\Models\Settings::value('address')}}</li>
+                        <li><span>Phone:</span>{{\App\Models\Settings::value('phone')}}</li>
+                        <li><span>FAX:</span> {{\App\Models\Settings::value('fax')}}</li>
+                        <li><span>Email:</span> {{\App\Models\Settings::value('email')}}</li>
                     </ul>
                     <div class="footer_social_area mt-15">
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                        <a href="{{\App\Models\Settings::value('facebook_url')}}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="{{\App\Models\Settings::value('twitter_url')}}"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="{{\App\Models\Settings::value('linkedin_url')}}"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="{{\App\Models\Settings::value('pinterest_url')}}"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -94,8 +92,8 @@
                         <h6>Download our Mobile Apps</h6>
                     </div>
                     <div class="apps_download">
-                        <a href="#"><img src="img/core-img/play-store.png" alt="Play Store"></a>
-                        <a href="#"><img src="img/core-img/app-store.png" alt="Apple Store"></a>
+                        <a href="#"><img src="{{asset('frontend/img/core-img/play-store.png')}}" alt="Play Store"></a>
+                        <a href="#"><img src="{{asset('frontend/img/core-img/app-store.png')}}" alt="Apple Store"></a>
                     </div>
                 </div>
             </div>
@@ -109,18 +107,17 @@
                 <!-- Copywrite -->
                 <div class="col-12 col-md-6">
                     <div class="copywrite_text">
-                        <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">Designing
-                                World</a></p>
+                        <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://raiprajwal.com" target="_blank">{{\App\Models\Settings::value('footer')}}</a></p>
                     </div>
                 </div>
                 <!-- Payment Method -->
                 <div class="col-12 col-md-6">
                     <div class="payment_method">
-                        <img src="img/payment-method/paypal.png" alt="">
-                        <img src="img/payment-method/maestro.png" alt="">
-                        <img src="img/payment-method/western-union.png" alt="">
-                        <img src="img/payment-method/discover.png" alt="">
-                        <img src="img/payment-method/american-express.png" alt="">
+                        <img src="{{asset('frontend/img/payment-method/paypal.png')}}" alt="">
+                        <img src="{{asset('frontend/img/payment-method/maestro.png')}}" alt="">
+                        <img src="{{asset('frontend/img/payment-method/western-union.png')}}" alt="">
+                        <img src="{{asset('frontend/img/payment-method/discover.png')}}" alt="">
+                        <img src="{{asset('frontend/img/payment-method/american-express.png')}}" alt="">
                     </div>
                 </div>
             </div>
